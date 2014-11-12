@@ -52,7 +52,7 @@ public class Solution3 {
         while(y >= 1) {
             int temp = y % 10;
             y = y / 10;
-            if(10 * res + temp > Integer.MAX_VALUE || 10 * res + temp < Integer.MIN_VALUE) {
+            if((10 * res + temp > Integer.MAX_VALUE && x > 0) || (-(10 * res + temp) < Integer.MIN_VALUE && x < 0)) {
                 return 0;
             }
             res = 10 * res + temp;
