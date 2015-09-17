@@ -1,5 +1,5 @@
 public class Solution1 {
-    public String addBinary(String a, String b) {
+	public String addBinary(String a, String b) {
 		if (a.length() > b.length()) {
 			String fill = "";
 			for (int i = 0; i < a.length() - b.length(); i++) {
@@ -60,7 +60,7 @@ public class Solution1 {
 }
 
 public class Solution2 {
-    public String addBinary(String a, String b) {
+	public String addBinary(String a, String b) {
 		if (a.length() > b.length()) {
 			String fill = "";
 			for (int i = 0; i < a.length() - b.length(); i++) {
