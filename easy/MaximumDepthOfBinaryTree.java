@@ -47,3 +47,20 @@ public class Solution2 {
         return Math.max(maxDepthHelper(n.left, depth), maxDepthHelper(n.right, depth));
     }
 }
+
+public class Solution3 {
+    public int maxDepth(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        return Math.max(maxDepthHelper(root.left, 1), maxDepthHelper(root.right, 1));
+    }
+    
+    public int maxDepthHelper(TreeNode node, int depth) {
+        if(node == null) {
+            return depth;
+        } else {
+            return Math.max(maxDepthHelper(node.left, depth + 1), maxDepthHelper(node.right, depth + 1));
+        }
+    }
+}
