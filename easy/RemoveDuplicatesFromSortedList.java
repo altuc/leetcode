@@ -16,12 +16,11 @@ public class Solution {
         }
         ListNode sentinel = new ListNode(0);
         sentinel.next = head;
-        ListNode p = head;
-        while(p.next != null) {
-            if(p.val == p.next.val) {
-                p.next = p.next.next;
+        while(head.next != null) {
+            if(head.val == head.next.val) {
+                head.next = head.next.next;
             } else {
-                p = p.next;
+                head = head.next;
             }
         }
         return sentinel.next;
