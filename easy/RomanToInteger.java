@@ -25,6 +25,8 @@ public class Solution {
             case 'M':
                 res += 1000;
                 break;
+            default:
+                break;
             }
         }
         return res;
