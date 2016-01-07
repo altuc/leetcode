@@ -55,3 +55,32 @@ public class Solution2 {
         return hasPathSumHelper(n.left, sum, path) || hasPathSumHelper(n.right, sum, path);
     }
 }
+
+public class Solution3 {
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root == null) {
+            return false;
+        }
+        if(root.left == null && root.right != null) {
+            return hasPathSumHelper(root.right, sum - root.val);
+        } else if(root.left != null && root.right == null) {
+            return hasPathSumHelper(root.left, sum - root.val);
+        } else if(root.left == null && root.right == null) {
+            return root.val == sum;
+        } else {
+            return hasPathSumHelper(root.left, sum - root.val) || hasPathSumHelper(root.right, sum - root.val);
+        }
+    }
+    
+    public boolean hasPathSumHelper(TreeNode node, int sum) {
+        if(node.left == null && node.right != null) {
+            return hasPathSumHelper(node.right, sum - node.val);
+        } else if(node.left != null && node.right == null) {
+            return hasPathSumHelper(node.left, sum - node.val);
+        } else if(node.left == null && node.right == null) {
+            return node.val == sum;
+        } else {
+            return hasPathSumHelper(node.left, sum - node.val) || hasPathSumHelper(node.right, sum - node.val);
+        }
+    }
+}
