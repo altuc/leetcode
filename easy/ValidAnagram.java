@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public boolean isAnagram(String s, String t) {
         if(s == null && t == null) {
             return true;
@@ -25,6 +25,30 @@ public class Solution {
                     map.put(t.charAt(j), map.get(t.charAt(j)) - 1);
                 }
             } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+public class Solution2 {
+    public boolean isAnagram(String s, String t) {
+        if(s == null && t == null) {
+            return true;
+        }
+        if((s == null && t != null) || (s != null && t == null)) {
+            return false;
+        }
+        if(s.length() != t.length()) {
+            return false;
+        }
+        char[] sc = s.toCharArray();
+        char[] tc = t.toCharArray();
+        Arrays.sort(sc);
+        Arrays.sort(tc);
+        for(int i = 0; i < sc.length; i++) {
+            if(sc[i] != tc[i]) {
                 return false;
             }
         }
