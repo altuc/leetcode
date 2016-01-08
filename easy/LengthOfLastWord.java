@@ -34,3 +34,17 @@ public class Solution2 {
         return count;
     }
 }
+
+public class Solution3 {
+    public int lengthOfLastWord(String s) {
+        if(s.isEmpty() || s == null) {
+            return 0;
+        }
+        String[] str = s.trim().split(" ");
+        if(str.length == 0) {
+            return 0;
+        } else {
+            return str[str.length - 1].length();
+        }
+    }
+}
