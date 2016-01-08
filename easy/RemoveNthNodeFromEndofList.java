@@ -18,10 +18,9 @@ public class Solution {
         sentinel.next = head;
         ListNode fp = sentinel;
         ListNode lp = sentinel;
-        int step = 0;
-        while(step < n) {
+        while(n > 0) {
             fp = fp.next;
-            step++;
+            n--;
         }
         while(fp.next != null) {
             fp = fp.next;
