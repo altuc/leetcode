@@ -25,3 +25,9 @@ public class Solution2 {
         }
     }
 }
+
+public class Solution3 {
+    public boolean isPowerOfThree(int n) {
+        return (Math.log10(n)/Math.log10(3)) % 1 == 0;
+    }
+}
