@@ -1,15 +1,8 @@
 public class Solution {
     public String countAndSay(int n) {
-        if(n == 1) {
-            return "1";
-        }
-        if(n == 2) {
-            return "11";
-        }
         String[] str = new String[n];
         str[0] = "1";
-        str[1] = "11";
-        for(int i = 2; i < str.length; i++) {
+        for(int i = 1; i < str.length; i++) {
             str[i] = "";
             int count = 1;
             for(int j = 0; j < str[i-1].length() - 1; j++) {
