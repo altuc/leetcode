@@ -70,14 +70,14 @@ public class Solution2 {
             }
             diff--;
         }
-        ListNode sentinel = headA;
         while(headA != null) {
-            if(headA.val != headB.val) {
-                sentinel = headA.next;
-            } 
-            headA = headA.next;
-            headB = headB.next;
+            if(headA.val == headB.val) {
+                return headA;
+            } else {
+                headA = headA.next;
+                headB = headB.next;
+            }
         }
-        return sentinel;
+        return headA;
     }
 }
