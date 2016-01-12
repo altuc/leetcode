@@ -19,7 +19,7 @@ public class Solution {
             cur = cur.next;
             len++;
         }
-        int move = len/2;
+        int move = len / 2;
         while(move > 0) {
             right = head.next;
             head.next = left;
