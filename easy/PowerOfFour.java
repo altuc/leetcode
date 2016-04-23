@@ -16,3 +16,9 @@ public class Solution2 {
         return ((num & (num - 1)) == 0) && (num > 0) && ((num & 0x55555555) == num);
     }
 }
+
+public class Solution3 {
+    public boolean isPowerOfFour(int num) {
+        return (Math.log10(num)/Math.log10(4)) % 1 == 0;
+    }
+}
