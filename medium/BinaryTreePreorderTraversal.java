@@ -51,3 +51,16 @@ public class Solution2 {
         preorderTraversalHelper(n.right, list);
     }
 }
+
+public class Solution3 {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(root == null) {
+            return res;
+        }
+        res.add(root.val);
+        res.addAll(preorderTraversal(root.left));
+        res.addAll(preorderTraversal(root.right));
+        return res;
+    }
+}
