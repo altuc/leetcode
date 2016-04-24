@@ -7,7 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class Solution1 {
     public List<Integer> preorderTraversal(TreeNode root) {
         ArrayList<Integer> res = new ArrayList<Integer>();
         if(root == null) {
@@ -26,5 +26,28 @@ public class Solution {
             }
         }
         return res;
+    }
+}
+
+public class Solution2 {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        if(root == null) {
+            return res;
+        }
+        res.add(root.val);
+        preorderTraversalHelper(root.left, res);
+        preorderTraversalHelper(root.right, res);
+        return res;
+    }
+    
+    public void preorderTraversalHelper(TreeNode n, ArrayList<Integer> list) {
+        if(n == null) {
+            return;
+        } else {
+            list.add(n.val);
+        }
+        preorderTraversalHelper(n.left, list);
+        preorderTraversalHelper(n.right, list);
     }
 }
