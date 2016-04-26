@@ -29,3 +29,20 @@ public class Solution2 {
         return rows[m - 1];
     }
 }
+
+public class Solution3 {
+    public int uniquePaths(int m, int n) {
+        int total = m + n - 2;
+        int target = m < n ? n : m;
+        int base = m < n ? m - 1 : n - 1;
+        double x = 1;
+        double y = 1;
+        for(int i = 1; i <= base; i++) {
+            x *= i;
+        }
+        for(int i = total; i >= target; i--) {
+            y *= i;
+        }
+        return (int)(y / x);
+    }
+}
