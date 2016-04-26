@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public int uniquePaths(int m, int n) {
         if(m == 0 || n == 0) {
             return 0;
@@ -14,5 +14,18 @@ public class Solution {
             }
         }
         return paths[m - 1][n - 1];
+    }
+}
+
+public class Solution2 {
+    public int uniquePaths(int m, int n) {
+        int[] rows = new int[m];
+        rows[0] = 1;
+        for(int i = 0; i < n; i++) {
+            for(int j = 1; j < m; j++) {
+                rows[j] = rows[j - 1] + rows[j];
+            }
+        }
+        return rows[m - 1];
     }
 }
