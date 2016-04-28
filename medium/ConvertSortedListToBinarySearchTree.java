@@ -33,7 +33,6 @@ public class Solution {
         root.right = sortedListToBST(slow.next.next);
         slow.next = null;
         root.left = sortedListToBST(head);
-        
         return root;
     }
 }
