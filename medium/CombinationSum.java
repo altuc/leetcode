@@ -16,7 +16,7 @@ public class Solution {
             return;
         }
         for(int i = start; i < candidates.length; i++) {
-            if(i > 0 && candidates[i] == candidates[i - 1]) {
+            if(i > start && candidates[i] == candidates[i - 1]) {
                 continue;
             }
             list.add(candidates[i]);
