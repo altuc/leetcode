@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public void sortColors(int[] nums) {
         int red = 0;
         int white = 0;
@@ -19,6 +19,30 @@ public class Solution {
             }
             if(i >= white + red) {
                 nums[i] = 2;
+            }
+        }
+    }
+}
+
+public class Solution2 {
+    public void sortColors(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+        for(int i = 0; i <= end; i++) {
+            if(nums[i] == 0) {
+                if(i != start) {
+                    nums[i] = nums[start];
+                    nums[start] = 0;
+                }
+                start++;
+            }
+            if(nums[i] == 2) {
+                if(i != end) {
+                    nums[i] = nums[end];
+                    nums[end] = 2;
+                }
+                end--;
+                i--;
             }
         }
     }
