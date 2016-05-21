@@ -22,8 +22,7 @@ public class Solution {
         path.add(node.val);
         sum -= node.val;
         if(node.left == null && node.right == null && sum == 0) {
-            List<Integer> list = new ArrayList<Integer>(path);
-            res.add(list);
+            res.add(new ArrayList<Integer>(path));
         }
         pathSumHelper(res, path, node.left, sum);
         pathSumHelper(res, path, node.right, sum);
