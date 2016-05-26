@@ -1,9 +1,12 @@
 public class Solution {
-    public String reverse(String str) {
+    public String reverseString(String s) {
+        if(s == null || s.length() <= 1) {
+            return s;
+        }
         StringBuilder sb = new StringBuilder();
-	for(int i = str.length() - 1; i >= 0; i--) {
-	    sb.append(str.charAt(i));
-	}
-	return sb.toString();
+        for(int i = s.length() - 1; i >= 0; i--) {
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
     }
 }
