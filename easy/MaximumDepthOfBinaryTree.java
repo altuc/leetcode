@@ -50,17 +50,13 @@ public class Solution2 {
 
 public class Solution3 {
     public int maxDepth(TreeNode root) {
-        if(root == null) {
-            return 0;
-        }
-        return Math.max(maxDepthHelper(root.left, 1), maxDepthHelper(root.right, 1));
+        return maxDepthHelper(root, 0);
     }
     
     public int maxDepthHelper(TreeNode node, int depth) {
         if(node == null) {
             return depth;
-        } else {
-            return Math.max(maxDepthHelper(node.left, depth + 1), maxDepthHelper(node.right, depth + 1));
         }
+        return Math.max(maxDepthHelper(node.left, depth + 1), maxDepthHelper(node.right, depth + 1));
     }
 }
