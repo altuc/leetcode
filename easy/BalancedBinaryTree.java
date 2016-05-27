@@ -7,7 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class Solution1 {
     public boolean isBalanced(TreeNode root) {
         if(root == null) {
             return true;
@@ -25,5 +25,23 @@ public class Solution {
             return -1;
         }
         return Math.max(left, right) + 1;
+    }
+}
+
+public class Solution2 {
+    public boolean isBalanced(TreeNode root) {
+        return isBalancedHelper(root, 0) != -1;
+    }
+    
+    public int isBalancedHelper(TreeNode node, int depth) {
+        if(node == null) {
+            return depth;
+        }
+        int left = isBalancedHelper(node.left, depth + 1);
+        int right = isBalancedHelper(node.right, depth + 1);
+        if(left == -1 || right == -1 || Math.abs(left - right) > 1) {
+            return -1;
+        }
+        return Math.max(left, right);
     }
 }
