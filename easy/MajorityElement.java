@@ -1,7 +1,7 @@
 public class Solution1 {
     public int majorityElement(int[] nums) {
         Arrays.sort(nums);
-        return nums[nums.length/2];
+        return nums[nums.length / 2];
     }
 }
 
@@ -15,7 +15,7 @@ public class Solution2 {
             } else {
                 map.put(num, map.get(num) + 1);
             }
-            if (map.get(num) > nums.length/2) {
+            if (map.get(num) > nums.length / 2) {
                 res = num;
                 break;
             }
