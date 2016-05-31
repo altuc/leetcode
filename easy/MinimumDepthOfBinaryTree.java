@@ -47,3 +47,24 @@ public class Solution2 {
         return Math.min(minDepthHelper(n.left, depth), minDepthHelper(n.right, depth));
     }
 }
+
+public class Solution3 {
+    public int minDepth(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        return minDepthHelper(root, 1);
+    }
+    
+    public int minDepthHelper(TreeNode node, int depth) {
+        if(node.left == null && node.right == null) {
+            return depth;
+        } else if(node.left != null && node.right == null) {
+            return minDepthHelper(node.left, depth + 1);
+        } else if(node.left == null && node.right != null) {
+            return minDepthHelper(node.right, depth + 1);
+        } else {
+            return Math.min(minDepthHelper(node.left, depth + 1), minDepthHelper(node.right, depth + 1));
+        }
+    }
+}
