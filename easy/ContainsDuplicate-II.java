@@ -1,6 +1,6 @@
 public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        if(nums.length == 0 || nums.length == 1) {
+        if(nums == null || nums.length <= 1) {
             return false;
         }
         HashMap<Integer, Integer> map = new HashMap<>();
