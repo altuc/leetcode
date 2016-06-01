@@ -24,7 +24,7 @@ public class Solution1 {
 
 public class Solution2 {
     public boolean isValid(String s) {
-        if(s.isEmpty() || s == null) {
+        if(s == null || s.isEmpty()) {
             return true;
         }
         if(s.charAt(0) == ')' || s.charAt(0) == ']' || s.charAt(0) == '}' || s.length() == 1) {
