@@ -50,3 +50,28 @@ public class Solution2 {
         return true;
     }
 }
+
+public class Solution3 {
+    public boolean isPalindrome(String s) {
+        if(s == null || s.isEmpty()) {
+            return true;
+        }
+        int start = 0;
+        int end = s.length() - 1;
+        String str = s.toLowerCase();
+        while(start < end) {
+            if(str.charAt(start) < '0' || (str.charAt(start) > '9' && str.charAt(start) < 'a') || str.charAt(start) > 'z') {
+                start++;
+            } else if(str.charAt(end) < '0' || (str.charAt(end) > '9' && str.charAt(end) < 'a') || str.charAt(end) > 'z') {
+                end--;
+            } else {
+                if(str.charAt(start) != str.charAt(end)) {
+                    return false;
+                }
+                start++;
+                end--;
+            }
+        }
+        return true;
+    }
+}
