@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public int atoi(String str) {
         long temp = 0;
         if(str.isEmpty()) {
@@ -36,11 +36,40 @@ public class Solution {
             }
         }
         if (s.equals("+") || s.equals("-")) {
-			return 0;
-		}
+	    return 0;
+	}
         if(s.charAt(0) == '+' && s.length() > 1) {
             s = s.substring(1);
         }
         return Integer.parseInt(s);
+    }
+}
+
+public class Solution2 {
+    public int myAtoi(String str) {
+        if(str == null || str.trim().isEmpty()) {
+            return 0;
+        }
+        str = str.trim();
+        int sign = 1, start = 0, res = 0, len = str.length();
+        if(str.charAt(0) == '+') {
+            sign = 1;
+            start++;
+        }
+        if(str.charAt(0) == '-') {
+            sign = -1;
+            start++;
+        }
+        for(int i = start; i < len; i++) {
+            if(str.charAt(i) < '0' || str.charAt(i) > '9') {
+                break;
+            }
+            if(res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && Integer.MAX_VALUE % 10 < str.charAt(i) - '0')) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            } else{
+                res = 10 * res + str.charAt(i) - '0';
+            }
+        }
+        return sign * res;
     }
 }
