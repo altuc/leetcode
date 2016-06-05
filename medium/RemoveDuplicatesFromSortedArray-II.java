@@ -44,3 +44,30 @@ public class Solution2 {
         return i;
     }
 }
+
+public class Solution3 {
+    public int removeDuplicates(int[] nums) {
+        if(nums == null || nums.length == 0) {
+            return 0;
+        }
+        if(nums.length < 3) {
+            return nums.length;
+        }
+        int start = 1;
+        int count = 1;
+        for(int i = 1; i < nums.length; i++) {
+            if(nums[i] == nums[i - 1]) {
+                count++;
+                if(count <= 2) {
+                    nums[start] = nums[i];
+                    start++;
+                }
+            } else {
+                nums[start] = nums[i];
+                start++;
+                count = 1;
+            }
+        }
+        return start;
+    }
+}
