@@ -29,7 +29,7 @@ public class Solution2 {
     }
 }
 
-public class Solution {
+public class Solution3 {
     public int findMin(int[] nums) {
         int start = 0;
         int end = nums.length - 1;
