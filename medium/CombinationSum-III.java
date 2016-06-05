@@ -2,7 +2,7 @@ public class Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         List<Integer> list = new ArrayList<Integer>();
-        if(n < 1 || n > 45 || k < 1 || k > 9 || k >= n) {
+        if(n < 1 || n > 45 || k < 1 || k > 9 || k > n) {
             return res;
         }
         combinationSum3Helper(k, n, res, list, 1);
