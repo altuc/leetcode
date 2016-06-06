@@ -1,14 +1,15 @@
 public class NumArray {
-    private int[] sums;
+    
+    private int[] sums = null;
 
     public NumArray(int[] nums) {
-        if(nums.length == 0) {
+        if(nums == null || nums.length == 0) {
             return;
         }
         sums = new int[nums.length];
         sums[0] = nums[0];
         for(int i = 1; i < nums.length; i++) {
-            sums[i] = sums[i-1] + nums[i];
+            sums[i] = sums[i - 1] + nums[i];
         }
     }
 
@@ -16,7 +17,7 @@ public class NumArray {
         if(i == 0) {
             return sums[j];
         } else {
-            return sums[j] - sums[i-1];
+            return sums[j] - sums[i - 1];
         }
     }
 }
