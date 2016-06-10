@@ -1,6 +1,8 @@
-class MyStack {
+class MyStack1 {
+    
     Queue<Integer> q1 = new LinkedList<>();
     Queue<Integer> q2 = new LinkedList<>();
+    
     // Push element x onto stack.
     public void push(int x) {
         if(!q2.isEmpty()) {
@@ -47,5 +49,42 @@ class MyStack {
     // Return whether the stack is empty.
     public boolean empty() {
         return q1.isEmpty() && q2.isEmpty();
+    }
+}
+
+class MyStack2 {
+    
+    Queue<Integer> que1 = new LinkedList<Integer>();
+    Queue<Integer> que2 = new LinkedList<Integer>();
+    
+    // Push element x onto stack.
+    public void push(int x) {
+        if(que1.isEmpty()) {
+            que1.add(x);
+        } else {
+            que2.add(que1.poll());
+            que1.add(x);
+        }
+    }
+
+    // Removes the element on top of the stack.
+    public void pop() {
+        que1.poll();
+        while(!que2.isEmpty()) {
+            que1.add(que2.poll());
+        }
+        while(que1.size() > 1) {
+            que2.add(que1.poll());
+        }
+    }
+
+    // Get the top element.
+    public int top() {
+        return que1.peek();
+    }
+
+    // Return whether the stack is empty.
+    public boolean empty() {
+        return que1.isEmpty() && que2.isEmpty();
     }
 }
