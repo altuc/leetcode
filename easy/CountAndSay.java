@@ -38,3 +38,31 @@ public class Solution2 {
         return cur;
     }
 }
+
+public class Solution3 {
+    public String countAndSay(int n) {
+        if(n <= 0) {
+            return "";
+        }
+        String str = "1";
+        if(n == 1) {
+            return str;
+        }
+        for(int i = 2; i <= n; i++) {
+            String tmp = "";
+            int count = 1;
+            int j = 1;
+            for(; j < str.length(); j++) {
+                if(str.charAt(j - 1) != str.charAt(j)) {
+                    tmp = tmp + Integer.toString(count) + String.valueOf(str.charAt(j - 1));
+                    count = 1;
+                } else {
+                    count++;
+                }
+            }
+            tmp = tmp + Integer.toString(count) + String.valueOf(str.charAt(j - 1));
+            str = tmp;
+        }
+        return str;
+    }
+}
