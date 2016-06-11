@@ -56,3 +56,26 @@ public class Solution2 {
         return generateHelper(numRows, rs, row);
     }
 }
+
+public class Solution3 {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> firstRow = new ArrayList<Integer>();
+        if(numRows <= 0) {
+            return res;
+        }
+        firstRow.add(1);
+        res.add(firstRow);
+        for(int i = 1; i < numRows; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            row.add(1);
+            for(int j = 1; j < res.get(i - 1).size(); j++) {
+                int num = res.get(i - 1).get(j - 1) + res.get(i - 1).get(j);
+                row.add(num);
+            }
+            row.add(1);
+            res.add(row);
+        }
+        return res;   
+    }
+}
