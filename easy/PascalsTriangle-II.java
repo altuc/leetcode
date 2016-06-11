@@ -50,3 +50,24 @@ public class Solution2 {
         return getRowHelper(rowIndex, row);
     }
 }
+
+public class Solution3 {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(rowIndex < 0) {
+            return res;
+        }
+        res.add(1);
+        for(int i = 1; i <= rowIndex; i++) {
+            List<Integer> row = new ArrayList<Integer>();
+            row.add(1);
+            for(int j = 1; j < res.size(); j++) {
+                int num = res.get(j - 1) + res.get(j);
+                row.add(num);
+            }
+            row.add(1);
+            res = row;
+        }
+        return res;
+    }
+}
