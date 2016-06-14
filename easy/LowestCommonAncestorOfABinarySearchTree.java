@@ -39,3 +39,18 @@ public class Solution2 {
         return cur;
     }
 }
+
+public class Solution3 {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null) {
+            return null;
+        }
+        if(root.val < q.val && root.val < p.val) {
+            root = lowestCommonAncestor(root.right, p, q);
+        }
+        if(root.val > q.val && root.val > p.val) {
+            root = lowestCommonAncestor(root.left, p, q);
+        }
+        return root;
+    }
+}
