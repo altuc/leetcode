@@ -5,7 +5,6 @@ public class Solution {
             return res;
         }
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
-        Arrays.sort(strs);
         for(String str : strs) {
             char[] arr = str.toCharArray();
             Arrays.sort(arr);
