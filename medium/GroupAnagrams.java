@@ -14,8 +14,8 @@ public class Solution {
             } 
             map.get(key).add(str);
         }
-        for(Map.Entry<String, List<String>> entry : map.entrySet()) {
-            res.add(entry.getValue());
+        for(List<String> value : map.values()) {
+            res.add(value);
         }
         return res;
     }
