@@ -29,3 +29,28 @@ public class Solution2 {
     }
 }
 
+public class Solution3 {
+    public int hIndex(int[] citations) {
+        if(citations == null || citations.length == 0) {
+            return 0;
+        }
+        int len = citations.length;
+        int[] index = new int[len + 1];
+        for(int n : citations) {
+            if(n >= len) {
+                index[len]++;
+            } else {
+                index[n]++;
+            }
+        }
+        int total = 0;
+        for(int i = len; i >= 0; i--) {
+            total += index[i];
+            if(total >= i) {
+                return i;
+            }
+        }
+        return 0;
+    }
+}
+
