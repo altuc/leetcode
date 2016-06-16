@@ -22,8 +22,7 @@ public class Solution {
                 return false;
             }
         }
-        isNull += 1;
-        if(isNotNull != isNull - 1) {
+        if(isNotNull != isNull) {
             return false;
         }
         return true;
