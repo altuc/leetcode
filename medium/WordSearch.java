@@ -1,9 +1,9 @@
 public class Solution {
     public boolean exist(char[][] board, String word) {
-        if(board == null || board.length == 0 || board[0].length == 0) {
+        if(!word.isEmpty() && (board == null || board.length == 0 || board[0].length == 0)) {
             return false;
         }
-        if(word == null || word.length() == 0 || word.length() > board.length * board[0].length) {
+        if(board.length * board[0].length < word.length()) {
             return false;
         }
         boolean[][] visited = new boolean[board.length][board[0].length];
