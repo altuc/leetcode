@@ -44,6 +44,6 @@ public class Solution2 {
             x = 1 / x;
         }
         double tmp = myPow(x * x, n / 2);
-        return n % 2 == 0? tmp : x * tmp;
+        return n % 2 == 0 ? tmp : x * tmp;
     }
 }
