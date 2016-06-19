@@ -36,6 +36,9 @@ public class Solution2 {
         if(n == 0) {
             return 1.00;
         }
+        if(x != 1 && x != -1 && n == Integer.MIN_VALUE) {
+            return 0.00;
+        }
         if(n < 0) {
             n = -n;
             x = 1 / x;
