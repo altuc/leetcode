@@ -20,14 +20,14 @@ public class Solution1 {
             return 0.00;
         }
         double result = x;
-        int m = n > 0? n : -n;
+        int m = Math.abs(n);
         for(int i = 1; i < m; i++) {
             if(result == result * x) {
                 break;
             }
             result *= x;
         }
-        return n > 0? result : 1 / result;
+        return n > 0 ? result : 1 / result;
     }
 }
 
