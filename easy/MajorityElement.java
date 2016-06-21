@@ -23,3 +23,23 @@ public class Solution2 {
         return res;
     }
 }
+
+public class Solution3 {
+    public int majorityElement(int[] nums) {
+        int majority = 0;
+        int counter = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(counter == 0) {
+                counter++;
+                majority = nums[i];
+            } else {
+                if(nums[i] == majority) {
+                    counter++;
+                } else {
+                    counter--;
+                }
+            }
+        }
+        return majority;
+    }
+}
