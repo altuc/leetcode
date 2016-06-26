@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
         List<String> res = new ArrayList<String>();
         String s = "";
