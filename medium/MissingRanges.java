@@ -47,3 +47,28 @@ public class Solution {
         return res;
     }
 }
+
+public class Solution2 {
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
+        List<String> res = new ArrayList<String>();
+        for(int i = 0; i <= nums.length; i++) {
+            int start = i == 0 ? lower : nums[i - 1] + 1;
+            int end = i == nums.length ? upper : nums[i] - 1;
+            findMissingRangesHelper(res, start, end);
+        }
+        return res;
+    }
+    
+    public void findMissingRangesHelper(List<String> res, int start, int end) {
+        String s = "";
+        if(start > end) {
+            return;
+        } else if(start == end) {
+            s = Integer.toString(start);
+            res.add(s);
+        } else {
+            s = Integer.toString(start) + "->" + Integer.toString(end);
+            res.add(s);
+        }
+    }
+}
