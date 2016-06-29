@@ -9,7 +9,7 @@ public class Solution {
     }
     
     public void generateParenthesisHelper(ArrayList<String> res, String current, int left, int right) {
-        if(left > right || left < 0 || right < 0) {
+        if(left > right || left < 0) {
             return;
         }
         if(left == 0 && right == 0) {
