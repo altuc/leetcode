@@ -7,7 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class Solution1 {
     public int kthSmallest(TreeNode root, int k) {
         ArrayList<Integer> res = new ArrayList<Integer>();
         Stack<TreeNode> s = new Stack<TreeNode>();
@@ -26,5 +26,28 @@ public class Solution {
             }
         }
         return res.get(k-1);
+    }
+}
+
+public class Solution2 {
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> s = new Stack<TreeNode>();
+        TreeNode n = root;
+        int res = 0;
+        while(!s.empty() || n != null) {
+            if(n != null) {
+                s.push(n);
+                n = n.left;
+            } else {
+                n = s.pop();
+                k--;
+                if(k == 0) {
+                    res = n.val;
+                    break;
+                }
+                n = n.right;
+            }
+        }
+        return res;
     }
 }
