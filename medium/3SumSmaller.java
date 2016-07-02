@@ -1,6 +1,6 @@
 public class Solution {
     public int threeSumSmaller(int[] nums, int target) {
-        if(nums == null || nums.length == 0) {
+        if(nums == null || nums.length < 3) {
             return 0;
         }
         Arrays.sort(nums);
