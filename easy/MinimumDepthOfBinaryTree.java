@@ -68,3 +68,33 @@ public class Solution3 {
         }
     }
 }
+
+public class Solution4 {
+    public int minDepth(TreeNode root) {
+        if(root == null) {
+            return 0;
+        }
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(root);
+        int depth = 1;
+        while(!q.isEmpty()) {
+            List<TreeNode> ls = new ArrayList<TreeNode>();
+            while(!q.isEmpty()) {
+                ls.add(q.poll());
+            }
+            for(TreeNode n : ls) {
+                if(n.left == null && n.right == null) {
+                    return depth;
+                }
+                if(n.left != null) {
+                    q.add(n.left);
+                }
+                if(n.right != null) {
+                    q.add(n.right);
+                }
+            }
+            depth++;
+        }
+        return depth;
+    }
+}
