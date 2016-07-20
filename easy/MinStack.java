@@ -1,7 +1,7 @@
 public class MinStack {
 
-    Stack<Integer> sta = null;
-    Stack<Integer> min = null;
+    private Stack<Integer> sta = null;
+    private Stack<Integer> min = null;
     
     /** initialize your data structure here. */
     public MinStack() {
