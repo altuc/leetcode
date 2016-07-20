@@ -14,7 +14,6 @@ public class ValidWordAbbr {
                 map.put(key, s);
             }
         }
-        
     }
 
     public boolean isUnique(String word) {
