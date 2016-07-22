@@ -10,9 +10,10 @@
 
 public class BSTIterator {
 
-    private Stack<TreeNode> sta = new Stack<TreeNode>();
+    private Stack<TreeNode> sta = null;
 
     public BSTIterator(TreeNode root) {
+        sta = new Stack<TreeNode>();
         pushAll(root);
     }
 
