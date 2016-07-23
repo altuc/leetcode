@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public List<String> generatePossibleNextMoves(String s) {
         List<String> res = new ArrayList<String>();
         if(s == null || s.length() < 2) {
@@ -12,6 +12,18 @@ public class Solution {
                 res.add(new String(ca));
                 ca[i] = '+';
                 ca[i - 1] = '+';
+            }
+        }
+        return res;
+    }
+}
+
+public class Solution2 {
+    public List<String> generatePossibleNextMoves(String s) {
+        List<String> res = new ArrayList<String>();
+        for(int i = 0; i < s.length() - 1; i++) {
+            if(s.charAt(i) == '+' && s.charAt(i + 1) == '+') {
+                res.add(s.substring(0, i) + "--" + s.substring(i + 2, s.length()));
             }
         }
         return res;
