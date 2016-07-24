@@ -1,6 +1,6 @@
 public class MovingAverage {
     
-    Queue<Integer> q = null;
+    private Queue<Integer> q = null;
     int max;
     double sum = 0.0;
 
@@ -14,14 +14,11 @@ public class MovingAverage {
     }
     
     public double next(int val) {
-        if(q.size() < max) {
-            q.add(val);
-            sum += val;
-        } else {
+        if(q.size() == max) {
             sum -= q.poll();
-            q.add(val);
-            sum += val;
         }
+        q.add(val);
+        sum += val;
         return sum / q.size();
     }
 }
