@@ -23,9 +23,7 @@ public class Solution {
         int sum = 0;
         int level = 1;
         Queue<NestedInteger> q = new LinkedList<NestedInteger>();
-        for(NestedInteger ni : nestedList) {
-            q.add(ni);
-        }
+        q.addAll(nestedList);
         while(!q.isEmpty()) {
             int size = q.size();
             for(int i = 0; i < size; i++) {
