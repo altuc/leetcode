@@ -8,7 +8,7 @@ public class Solution {
         int start = 0;
         int end = nums.length - 1;
         while(start < end) {
-            int mid = (start + end) / 2;
+            int mid = start + (end - start) / 2;
             if(target > nums[mid]) {
                 start = mid + 1;
             } else {
@@ -22,7 +22,7 @@ public class Solution {
         }
         end = nums.length - 1;
         while(start < end) {
-            int mid = (start + end) / 2 + 1;
+            int mid = start + (end - start) / 2 + 1;
             if(target < nums[mid]) {
                 end = mid - 1;
             } else {
