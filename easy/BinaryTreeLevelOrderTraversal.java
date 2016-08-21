@@ -9,19 +9,17 @@
  */
 public class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
         if(root == null) {
             return res;
         }
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(root);
         while(!q.isEmpty()) {
-            ArrayList<Integer> level = new ArrayList<Integer>();
-            ArrayList<TreeNode> nodeList = new ArrayList<TreeNode>();
-            while(!q.isEmpty()) {
-                nodeList.add(q.remove());
-            }
-            for(TreeNode n : nodeList) {
+            int size = q.size();
+            List<Integer> level = new ArrayList<Integer>();
+            for(int i = 0; i < size; i++) {
+                TreeNode n = q.poll();
                 level.add(n.val);
                 if(n.left != null) {
                     q.add(n.left);
