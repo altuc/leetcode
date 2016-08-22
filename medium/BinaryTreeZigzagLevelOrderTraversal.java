@@ -15,30 +15,27 @@ public class Solution {
         }
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(root);
-        int level = 1;
+        boolean oddLevel = true;
         while(!q.isEmpty()) {
             int size = q.size();
-            List<Integer> ls = new ArrayList<Integer>();
+            List<Integer> level = new ArrayList<Integer>();
             for(int i = 0; i < size; i++) {
                 TreeNode n = q.poll();
+                level.add(n.val);
                 if(n.left != null) {
                     q.add(n.left);
                 }
                 if(n.right != null) {
                     q.add(n.right);
                 }
-                ls.add(n.val);
             }
-            if(level % 2 != 0) {
-                res.add(ls);
+            if(oddLevel) {
+                res.add(level);
             } else {
-                List<Integer> reverseLs = new ArrayList<Integer>();
-                for(int i = ls.size() - 1; i >= 0; i--) {
-                    reverseLs.add(ls.get(i));
-                }
-                res.add(reverseLs);
+                Collections.reverse(level);
+                res.add(level);
             }
-            level++;
+            oddLevel = !oddLevel;
         }
         return res;
     }
