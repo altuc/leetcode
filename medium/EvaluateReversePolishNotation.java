@@ -1,38 +1,31 @@
 public class Solution {
     public int evalRPN(String[] tokens) {
+        if(tokens == null || tokens.length == 0) {
+            return 0;
+        }
+        int num1 = 0;
+        int num2 = 0;
         Stack<Integer> sta = new Stack<Integer>();
-        int o1 = 0;
-        int o2 = 0;
-        int res = 0;
         for(String s : tokens) {
             switch(s) {
-                case "+":
-                    o1 = sta.pop();
-                    o2 = sta.pop();
-                    res = o2 + o1;
-                    sta.push(res);
-                    break;
-                case "-":
-                    o1 = sta.pop();
-                    o2 = sta.pop();
-                    res = o2 - o1;
-                    sta.push(res);
-                    break;
-                case "*":
-                    o1 = sta.pop();
-                    o2 = sta.pop();
-                    res = o2 * o1;
-                    sta.push(res);
-                    break;
-                case "/":
-                    o1 = sta.pop();
-                    o2 = sta.pop();
-                    res = o2 / o1;
-                    sta.push(res);
-                    break;
-                default:
-                    sta.push(Integer.parseInt(s));
-                    break;
+                case "+": num1 = sta.pop();
+                          num2 = sta.pop();
+                          sta.push(num1 + num2);
+                          break;
+                case "-": num1 = sta.pop();
+                          num2 = sta.pop();
+                          sta.push(num2 - num1);
+                          break;
+                case "*": num1 = sta.pop();
+                          num2 = sta.pop();
+                          sta.push(num1 * num2);
+                          break;
+                case "/": num1 = sta.pop();
+                          num2 = sta.pop();
+                          sta.push(num2 / num1);
+                          break;
+                default:  sta.push(Integer.parseInt(s));
+                          break;
             }
         }
         return sta.pop();
