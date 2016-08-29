@@ -1,16 +1,33 @@
-public class Solution {
+public class Solution1 {
     public int climbStairs(int n) {
-        if(n <= 1) {
+        if(n == 1) {
             return 1;
         }
-        int[] total = new int[n];
-        total[0] = 1;
-        total[1] = 2;
-        int step = 2;
-        while(step < n) {
-            total[step] = total[step-1] + total[step-2];
-            step++;
+        int[] res = new int[n];
+        res[0] = 1;
+        res[1] = 2;
+        for(int i = 2; i < n; i++) {
+            res[i] = res[i - 1] + res[i - 2];
         }
-        return total[n-1];
+        return res[n - 1];
+    }
+}
+
+public class Solution2 {
+    public int climbStairs(int n) {
+        if(n == 1) {
+            return 1;
+        }
+        if(n == 2) {
+            return 2;
+        }
+        int prevTwoStair = 1;
+        int prevOneStair = 2;
+        for(int i = 3; i < n; i++) {
+            int temp = prevOneStair;
+            prevOneStair += prevTwoStair;
+            prevTwoStair = temp;
+        }
+        return prevTwoStair + prevOneStair;
     }
 }
