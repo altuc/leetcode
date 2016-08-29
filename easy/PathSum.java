@@ -17,11 +17,7 @@ public class Solution1 {
     
     public boolean hasPathSumHelper(TreeNode l, TreeNode r, int sum) {
         if(l == null && r == null) {
-            if(sum == 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return sum == 0;
         } else if(l == null && r != null) {
             return hasPathSumHelper(r.left, r.right, sum - r.val);
         } else if(l != null && r == null) {
