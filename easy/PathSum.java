@@ -42,11 +42,7 @@ public class Solution2 {
         }
         path = path + n.val;
         if(n.left == null && n.right == null) {
-            if(path == sum) {
-                return true;
-            } else {
-                return false;
-            }
+            return path == sum;
         }
         return hasPathSumHelper(n.left, sum, path) || hasPathSumHelper(n.right, sum, path);
     }
