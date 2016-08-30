@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public int rob(int[] nums) {
         if(nums == null || nums.length == 0) {
             return 0;
@@ -13,5 +13,24 @@ public class Solution {
             res[i] = Math.max(res[i - 1], res[i - 2] + nums[i]);
         }
         return res[nums.length - 1];
+    }
+}
+
+public class Solution2 {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0) {
+            return 0;
+        }
+        if(nums.length == 1) {
+            return nums[0];
+        }
+        int pre = nums[0];
+        int cur = Math.max(nums[0], nums[1]);
+        for(int i = 2; i < nums.length; i++) {
+            int temp = cur;
+            cur = Math.max(cur, pre + nums[i]);
+            pre = temp;
+        }
+        return cur;
     }
 }
