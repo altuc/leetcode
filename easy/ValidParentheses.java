@@ -1,46 +1,21 @@
-public class Solution1 {
-    public boolean isValid(String s) {
-        if(s.isEmpty()) {
-            return true;
-        }
-        if(s.length() == 1) {
-            return false;
-        }
-        Stack<Character> sta = new Stack<Character>();
-        for(char c : s.toCharArray()) {
-            if(sta.empty()) {
-                sta.push(c);
-            } else {
-                if((c == ')' && sta.peek() == '(') || (c == '}' && sta.peek() == '{') || (c == ']' && sta.peek() == '[')) {
-                    sta.pop();
-                } else {
-                    sta.push(c);
-                }
-            }
-        }
-        return sta.size() == 0;
-    }
-}
-
-public class Solution2 {
+public class Solution {
     public boolean isValid(String s) {
         if(s == null || s.isEmpty()) {
             return true;
         }
-        if(s.charAt(0) == ')' || s.charAt(0) == ']' || s.charAt(0) == '}' || s.length() == 1) {
-            return false;
-        }
-        Stack<Character> sta = new Stack<>();
+        Stack<Character> sta = new Stack<Character>();
         for(char c : s.toCharArray()) {
-            if(sta.empty()) {
+            if(c == '(' || c == '{' || c == '[') {
                 sta.push(c);
-            } else {
-                if((c == ')' && sta.pop() != '(') || (c == ']' && sta.pop() != '[') || (c == '}' && sta.pop() != '{')) {
-                    return false;
-                } 
-                if(c == '(' || c == '[' || c == '{') {
-                    sta.push(c);
-                }
+            }
+            if(c == ')' && (sta.empty() || sta.pop() != '(')) {
+                return false;
+            }
+            if(c == '}' && (sta.empty() || sta.pop() != '{')) {
+                return false;
+            }
+            if(c == ']' && (sta.empty() || sta.pop() != '[')) {
+                return false;
             }
         }
         return sta.empty();
