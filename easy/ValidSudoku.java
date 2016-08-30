@@ -1,100 +1,20 @@
-public class Solution1 {
+public class Solution {
     public boolean isValidSudoku(char[][] board) {
-        for(int i = 0; i < 9; i++) {
-            ArrayList<Character> list = new ArrayList<Character>();
-            for(int j = 0; j < 9; j++) {
-                if(board[i][j] != '.' && list.contains(board[i][j])) {
-                    return false;
-                } else {
-                    list.add(board[i][j]);
-                }
-            }
-        }
-        for(int j = 0; j < 9; j++) {
-            ArrayList<Character> list = new ArrayList<Character>();
-            for(int i = 0; i < 9; i++) {
-                if(board[i][j] != '.' && list.contains(board[i][j])) {
-                    return false;
-                } else {
-                    list.add(board[i][j]);
-                }
-            }
-        }
-        for(int i = 0; i < 9; i += 3) {
-            for(int j = 0; j < 9; j += 3) {
-                ArrayList<Character> list = new ArrayList<Character>();
-                for(int m = 0; m < 3; m++) {
-                    for(int n = 0; n < 3; n++) {
-                        if(board[m+i][n+j] != '.' && list.contains(board[m+i][n+j])) {
-                            return false;
-                        } else {
-                            list.add(board[m+i][n+j]);
-                        }
-                    }
-                }
-            }
-        }
-        return true;
-    }
-}
-
-public class Solution2 {
-    public boolean isValidSudoku(char[][] board) {
-        if(board == null || board.length == 0 || board[0].length == 0) {
-            return false;
-        }
         for(int i = 0; i < board.length; i++) {
-            HashSet<Character> set = new HashSet<Character>();
-            for(int j = 0; j < board[0].length; j++) {
-                if(!set.add(board[i][j]) && board[i][j] != '.') {
-                    return false;
-                }
-            }
-        }
-        for(int j = 0; j < board[0].length; j++) {
-            HashSet<Character> set = new HashSet<Character>();
-            for(int i = 0; i < board.length; i++) {
-                if(!set.add(board[i][j]) && board[i][j] != '.') {
+            HashSet<Character> col = new HashSet<Character>();
+            HashSet<Character> row = new HashSet<Character>();
+            for(int j = 0; j < board.length; j++) {
+                if((board[i][j] != '.' && !row.add(board[i][j])) || (board[j][i] != '.' && !col.add(board[j][i]))) {
                     return false;
                 }
             }
         }
         for(int i = 0; i < board.length; i += 3) {
-            for(int j = 0; j < board[0].length; j += 3) {
+            for(int j = 0; j < board.length; j += 3) {
                 HashSet<Character> set = new HashSet<Character>();
                 for(int m = 0; m < 3; m++) {
                     for(int n = 0; n < 3; n++) {
-                        if(!set.add(board[i + m][j + n]) && board[i + m][j + n] != '.') {
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-        return true;
-    }
-}
-
-public class Solution3 {
-    public boolean isValidSudoku(char[][] board) {
-        for(int i = 0; i < 9; i++) {
-            HashSet<Character> set1 = new HashSet<Character>();
-            HashSet<Character> set2 = new HashSet<Character>();
-            for(int j = 0; j < 9; j++) {
-                if(board[i][j] != '.' && !set1.add(board[i][j])) {
-                    return false;
-                }
-                if(board[j][i] != '.' && !set2.add(board[j][i])) {
-                    return false;
-                }
-            }
-        }
-        for(int i = 0; i < 9; i += 3) {
-            for(int j = 0; j < 9; j += 3) {
-                HashSet<Character> set = new HashSet<Character>();
-                for(int m = 0; m < 3; m++) {
-                    for(int n = 0; n < 3; n++) {
-                        if(board[m + i][n + j] != '.' && !set.add(board[m + i][n + j])) {
+                        if(board[i + m][j + n] != '.' && !set.add(board[i + m][j + n])) {
                             return false;
                         }
                     }
