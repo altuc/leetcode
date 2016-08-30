@@ -35,7 +35,7 @@ public class Solution2 {
         return generateHelper(numRows, rs, ls);
     }
     
-    public List<List<Integer>> generateHelper(int numRows, ArrayList<List<Integer>> rs, ArrayList<Integer> ls) {
+    public List<List<Integer>> generateHelper(int numRows, List<List<Integer>> rs, List<Integer> ls) {
         if(numRows == 1) {
             return rs;
         }
