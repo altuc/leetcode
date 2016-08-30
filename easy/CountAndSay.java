@@ -26,7 +26,7 @@ public class Solution2 {
             StringBuilder sb = new StringBuilder();
             for(int i = 0; i < cur.length(); i++) {
                 int count = 1;
-                while((i+1) < cur.length() && cur.charAt(i) == cur.charAt(i+1)) {
+                while((i + 1) < cur.length() && cur.charAt(i) == cur.charAt(i + 1)) {
                     count++;
                     i++;
                 }
