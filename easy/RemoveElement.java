@@ -1,15 +1,15 @@
 public class Solution {
-    public int removeElement(int[] A, int elem) {
-        if(A.length == 0) {
-            return A.length;
+    public int removeElement(int[] nums, int val) {
+        if(nums == null || nums.length == 0) {
+            return 0;
         }
-        int k = 0;
-        for(int i = 0; i < A.length; i++) {
-            if(A[i] != elem) {
-                A[k] = A[i];
-                k++;
+        int left = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] != val) {
+                nums[left] = nums[i];
+                left++;
             }
         }
-        return k;
+        return left;
     }
 }
