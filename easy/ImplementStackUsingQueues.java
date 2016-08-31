@@ -1,7 +1,7 @@
 class MyStack1 {
     
-    Queue<Integer> q1 = new LinkedList<>();
-    Queue<Integer> q2 = new LinkedList<>();
+    private Queue<Integer> q1 = new LinkedList<>();
+    private Queue<Integer> q2 = new LinkedList<>();
     
     // Push element x onto stack.
     public void push(int x) {
@@ -54,8 +54,8 @@ class MyStack1 {
 
 class MyStack2 {
     
-    Queue<Integer> que1 = new LinkedList<Integer>();
-    Queue<Integer> que2 = new LinkedList<Integer>();
+    private Queue<Integer> que1 = new LinkedList<Integer>();
+    private Queue<Integer> que2 = new LinkedList<Integer>();
     
     // Push element x onto stack.
     public void push(int x) {
