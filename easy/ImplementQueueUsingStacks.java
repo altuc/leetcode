@@ -1,7 +1,7 @@
 class MyQueue1 {
     
-    Stack<Integer> s1 = new Stack<>();
-    Stack<Integer> s2 = new Stack<>();
+    private Stack<Integer> s1 = new Stack<>();
+    private Stack<Integer> s2 = new Stack<>();
     
     // Push element x to the back of queue.
     public void push(int x) {
@@ -40,8 +40,8 @@ class MyQueue1 {
 
 class MyQueue2 {
     
-    Stack<Integer> sta1 = new Stack<Integer>();
-    Stack<Integer> sta2 = new Stack<Integer>();
+    private Stack<Integer> sta1 = new Stack<Integer>();
+    private Stack<Integer> sta2 = new Stack<Integer>();
     
     // Push element x to the back of queue.
     public void push(int x) {
