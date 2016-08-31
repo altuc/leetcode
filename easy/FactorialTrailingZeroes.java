@@ -14,7 +14,7 @@ public class Solution2 {
         if(n < 5) {
             return 0;
         } else {
-            return n/5 + trailingZeroes(n/5);
+            return n / 5 + trailingZeroes(n / 5);
         }
     }
 }
