@@ -1,5 +1,8 @@
 public class Solution1 {
     public void moveZeroes(int[] nums) {
+        if(nums == null || nums.length <= 1) {
+            return;
+        }
         int start = 0;
         int end = 0;
         while(end < nums.length) {
@@ -18,8 +21,9 @@ public class Solution1 {
 
 public class Solution2 {
     public void moveZeroes(int[] nums) {
-        if(nums.length == 0 || nums.length == 1)
+        if(nums == null || nums.length <= 1) {
             return;
+        }
         int tail = 0;
         for(int i = 0; i < nums.length; i++) {
             if(nums[i] != 0) {
