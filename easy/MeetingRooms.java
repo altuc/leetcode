@@ -9,7 +9,7 @@
  */
 public class Solution {
     public boolean canAttendMeetings(Interval[] intervals) {
-        if(intervals.length < 2) {
+        if(intervals == null || intervals.length < 2) {
             return true;
         }
         Arrays.sort(intervals, (i1, i2) -> i1.start - i2.start);
