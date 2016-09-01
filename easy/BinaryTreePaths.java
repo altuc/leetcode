@@ -9,7 +9,7 @@
  */
 public class Solution1 {
     public List<String> binaryTreePaths(TreeNode root) {
-        ArrayList<String> res = new ArrayList<>();
+        List<String> res = new ArrayList<String>();
         if(root == null) {
             return res;
         } 
@@ -18,7 +18,7 @@ public class Solution1 {
         return res;
     }
     
-    public void binaryTreePathsHelper(TreeNode left, TreeNode right, String path, ArrayList<String> res) {
+    public void binaryTreePathsHelper(TreeNode left, TreeNode right, String path, List<String> res) {
         if(left == null && right == null) {
             res.add(path);
         } else if(left == null && right != null) {
