@@ -35,3 +35,20 @@ public class Solution2 {
         return cur;
     }
 }
+
+public class Solution3 {
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+        ListNode sentinel = new ListNode(0);
+        sentinel.next = head;
+        while(head.next != null) {
+            ListNode temp = head.next;
+            head.next = temp.next;
+            temp.next = sentinel.next;
+            sentinel.next = temp;
+        }
+        return sentinel.next;
+    }
+}
