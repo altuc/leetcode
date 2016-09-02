@@ -19,7 +19,7 @@ public class Solution2 {
             return true;
         }
         if(n % 3 == 0) {
-            return isPowerOfThree(n/3);
+            return isPowerOfThree(n / 3);
         } else {
             return false;
         }
@@ -28,6 +28,6 @@ public class Solution2 {
 
 public class Solution3 {
     public boolean isPowerOfThree(int n) {
-        return (Math.log10(n)/Math.log10(3)) % 1 == 0;
+        return (Math.log10(n) / Math.log10(3)) % 1 == 0;
     }
 }
