@@ -11,17 +11,11 @@ public class Logger {
         If this method returns false, the message will not be printed.
         The timestamp is in seconds granularity. */
     public boolean shouldPrintMessage(int timestamp, String message) {
-        if(map.containsKey(message)) {
-            if(timestamp - map.get(message) >= 10) {
-                map.put(message, timestamp);
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            map.put(message, timestamp);
-            return true;
+        if(map.containsKey(message) && timestamp - map.get(message) < 10) {
+            return false;
         }
+        map.put(message, timestamp);
+        return true;
     }
 }
 
