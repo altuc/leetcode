@@ -1,6 +1,6 @@
 public class Solution {
     public List<String> generateParenthesis(int n) {
-        ArrayList<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<String>();
         if(n <= 0) {
             return res;
         }
@@ -8,7 +8,7 @@ public class Solution {
         return res;
     }
     
-    public void generateParenthesisHelper(ArrayList<String> res, String current, int left, int right) {
+    public void generateParenthesisHelper(List<String> res, String current, int left, int right) {
         if(left > right || left < 0) {
             return;
         }
