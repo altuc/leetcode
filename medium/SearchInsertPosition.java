@@ -14,16 +14,22 @@ public class Solution2 {
         if(nums == null || nums.length == 0) {
             return 0;
         }
+        if(target <= nums[0]) {
+            return 0;
+        }
+        if(target > nums[nums.length - 1]) {
+            return nums.length;
+        }
         int start = 0;
         int end = nums.length - 1;
-        while(start <= end) {
-            int mid = (start + end) / 2;
-            if(nums[mid] < target) {
-                start = mid + 1;
-            } else if(nums[mid] > target) {
-                end = mid - 1;
-            } else {
+        while(start < end) {
+            int mid = start + (end - start) / 2;
+            if(target == nums[mid]) {
                 return mid;
+            } else if(target > nums[mid]) {
+                start = mid + 1;
+            } else {
+                end = mid;
             }
         }
         return start;
