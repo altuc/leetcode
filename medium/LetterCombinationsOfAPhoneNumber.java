@@ -4,7 +4,7 @@ public class Solution {
         if(digits == null || digits.isEmpty()) {
             return res;
         }
-        String[] mapping = new String[]{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        String[] mapping = new String[]{ "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
         String combination = "";
         int start = 0;
         letterCombinationsHelper(digits, res, combination, start, mapping);
