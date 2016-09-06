@@ -32,7 +32,6 @@ public class Solution2 {
         if(nums.length < 3) {
             return nums.length;
         }
-        Arrays.sort(nums);
         int i = 0;
         for(int n : nums) {
             if(i < 2 || n > nums[i - 2]) {
