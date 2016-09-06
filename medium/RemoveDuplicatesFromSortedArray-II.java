@@ -6,7 +6,6 @@ public class Solution1 {
         if(nums.length < 3) {
             return nums.length;
         }
-        Arrays.sort(nums);
         int length = 1;
         int count = 0;
         for(int i = 1; i < nums.length; i++) {
