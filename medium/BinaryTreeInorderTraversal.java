@@ -9,7 +9,7 @@
  */
 public class Solution1 {
     public List<Integer> inorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         if(root == null) {
             return res;
         }
@@ -31,7 +31,7 @@ public class Solution1 {
 
 public class Solution2 {
     public List<Integer> inorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         if(root == null) {
             return res;
         }
