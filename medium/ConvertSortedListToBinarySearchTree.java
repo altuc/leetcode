@@ -15,7 +15,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class Solution1 {
     public TreeNode sortedListToBST(ListNode head) {
         if(head == null) {
             return null;
@@ -34,5 +34,30 @@ public class Solution {
         slow.next = null;
         root.left = sortedListToBST(head);
         return root;
+    }
+}
+
+public class Solution2 {
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+        return sortedListToBSTHelper(head, null);
+    }
+    
+    public TreeNode sortedListToBSTHelper(ListNode start, ListNode end) {
+        if(start == end) {
+            return null;
+        }
+        ListNode slow = start;
+        ListNode fast = start;
+        while(fast != end && fast.next != end) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        TreeNode node = new TreeNode(slow.val);
+        node.left = sortedListToBSTHelper(start, slow);
+        node.right = sortedListToBSTHelper(slow.next, end);
+        return node;
     }
 }
