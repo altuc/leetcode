@@ -19,7 +19,7 @@ public class Solution1 {
         if(start >= end) {
             return null;
         }
-        int mid = (start + end) / 2;
+        int mid = start + (end - start) / 2;
         TreeNode node = new TreeNode(nums[mid]);
         node.left = sortedArrayToBSTHelper(nums, start, mid);
         node.right = sortedArrayToBSTHelper(nums, mid + 1, end);
@@ -51,7 +51,7 @@ public class Solution3 {
         if(start > end) {
             return null;
         }
-        int mid = (start + end) / 2;
+        int mid = start + (end - start) / 2;
         TreeNode node = new TreeNode(nums[mid]);
         node.left = sortedArrayToBSTHelper(nums, start, mid - 1);
         node.right = sortedArrayToBSTHelper(nums, mid + 1, end);
