@@ -55,3 +55,28 @@ public class Solution2 {
         }
     }
 }
+
+public class Solution3 {
+    public boolean isValidBST(TreeNode root) {
+        if(root == null) {
+            return true;
+        }
+        Stack<TreeNode> s = new Stack<TreeNode>();
+        Integer pre = null;
+        while(!s.empty() || root != null) {
+            if(root != null) {
+                s.push(root);
+                root = root.left;
+            } else {
+                root = s.pop();
+                if(pre != null && pre >= root.val) {
+                    return false;
+                } else {
+                    pre = root.val;
+                }
+                root = root.right;
+            }
+        }
+        return true;
+    }
+}
