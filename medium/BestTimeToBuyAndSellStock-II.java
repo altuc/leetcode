@@ -1,6 +1,6 @@
 public class Solution {
     public int maxProfit(int[] prices) {
-        if(prices.length <= 1) {
+        if(prices == null || prices.length <= 1) {
             return 0;
         }
         int profit = 0;
