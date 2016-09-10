@@ -9,7 +9,7 @@
  */
 public class Solution1 {
     public List<Integer> preorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         if(root == null) {
             return res;
         }
@@ -31,7 +31,7 @@ public class Solution1 {
 
 public class Solution2 {
     public List<Integer> preorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         if(root == null) {
             return res;
         }
@@ -41,7 +41,7 @@ public class Solution2 {
         return res;
     }
     
-    public void preorderTraversalHelper(TreeNode n, ArrayList<Integer> list) {
+    public void preorderTraversalHelper(TreeNode n, List<Integer> list) {
         if(n == null) {
             return;
         } else {
@@ -54,7 +54,7 @@ public class Solution2 {
 
 public class Solution3 {
     public List<Integer> preorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<Integer>();
         if(root == null) {
             return res;
         }
