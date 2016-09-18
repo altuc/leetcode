@@ -17,7 +17,8 @@ public class Solution {
         if(parents[node] == -1) {
             return node;
         } else {
-            return find(parents, parents[node]);
+            parents[node] = find(parents, parents[node]);
+            return parents[node];
         }
     }
 }
