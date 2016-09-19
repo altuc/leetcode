@@ -1,8 +1,8 @@
 public class LRUCache {
     
-    int cap;
-    HashMap<Integer, Node> map = null;
-    Node head, tail;
+    private int cap;
+    private Map<Integer, Node> map = null;
+    private Node head, tail;
     
     public LRUCache(int capacity) {
         cap = capacity;
