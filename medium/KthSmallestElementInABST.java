@@ -20,34 +20,31 @@ public class Solution1 {
                 n = s.pop();
                 res.add(n.val);
                 if(res.size() == k) {
-                    return res.get(k-1);
+                    return res.get(k - 1);
                 }
                 n = n.right;
             }
         }
-        return res.get(k-1);
+        return res.get(k - 1);
     }
 }
 
 public class Solution2 {
     public int kthSmallest(TreeNode root, int k) {
-        Stack<TreeNode> s = new Stack<TreeNode>();
-        TreeNode n = root;
-        int res = 0;
-        while(!s.empty() || n != null) {
-            if(n != null) {
-                s.push(n);
-                n = n.left;
+        Stack<TreeNode> sta = new Stack<TreeNode>();
+        while(!sta.empty() || root != null) {
+            if(root != null) {
+                sta.push(root);
+                root = root.left;
             } else {
-                n = s.pop();
-                k--;
-                if(k == 0) {
-                    res = n.val;
+                root = sta.pop();
+                if(k == 1) {
                     break;
                 }
-                n = n.right;
+                k--;
+                root = root.right;
             }
         }
-        return res;
+        return root.val;
     }
 }
