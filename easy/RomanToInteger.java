@@ -1,9 +1,9 @@
 public class Solution {
     public int romanToInt(String s) {
         int res = 0;
-        for(int i = s.length() - 1; i >= 0; i--) {
-            char c = s.charAt(i);
-            switch(c) {
+        int start = s.length() - 1;
+        for(int i = start; i >= 0; i--) {
+            switch(s.charAt(i)) {
                 case 'I':
                     res += res >= 5 ? -1 : 1;
                     break;
