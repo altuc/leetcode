@@ -1,74 +1,28 @@
-public class Solution1 {
-    public int atoi(String str) {
-        long temp = 0;
-        if(str.isEmpty()) {
-            return 0;
-        }
-        String s = str.trim();
-        if((s.charAt(0) < '0' || s.charAt(0) > '9') && s.charAt(0) != '-' && s.charAt(0) != '+') {
-            return 0;
-        }
-        if(s.charAt(0) == '-' || s.charAt(0) == '+') {
-            for(int i = 1; i < s.length(); i++) {
-                if(s.charAt(i) < '0' || s.charAt(i) > '9') {
-                    s = s.substring(0, i);
-                    break;
-                }
-                if(-(10 * temp + Integer.parseInt(String.valueOf(s.charAt(i)))) < Integer.MIN_VALUE && s.charAt(0) == '-') {
-                    return -2147483648;
-                }
-                if(10 * temp + Integer.parseInt(String.valueOf(s.charAt(i))) > Integer.MAX_VALUE && s.charAt(0) == '+') {
-                    return 2147483647;
-                }
-                temp = 10 * temp + Integer.parseInt(String.valueOf(s.charAt(i)));
-            }
-        }
-        if(s.charAt(0) >= '0' && s.charAt(0) <= '9') {
-            for(int j = 0; j < s.length(); j++) {
-                if(s.charAt(j) < '0' || s.charAt(j) > '9') {
-                    s = s.substring(0, j);
-                    break;
-                }
-                if(10 * temp + Integer.parseInt(String.valueOf(s.charAt(j))) > Integer.MAX_VALUE) {
-                    return 2147483647;
-                }
-                temp = 10 * temp + Integer.parseInt(String.valueOf(s.charAt(j)));
-            }
-        }
-        if (s.equals("+") || s.equals("-")) {
-	    return 0;
-	}
-        if(s.charAt(0) == '+' && s.length() > 1) {
-            s = s.substring(1);
-        }
-        return Integer.parseInt(s);
-    }
-}
-
-public class Solution2 {
+public class Solution {
     public int myAtoi(String str) {
+        int res = 0, sign = 1, pos = 0;
         if(str == null || str.trim().isEmpty()) {
-            return 0;
+            return res;
         }
         str = str.trim();
-        int sign = 1, start = 0, res = 0, len = str.length();
-        if(str.charAt(0) == '+') {
-            sign = 1;
-            start++;
+        int len = str.length();
+        char first = str.charAt(0);
+        if(first == '+') {
+            pos++;
         }
-        if(str.charAt(0) == '-') {
+        if(first == '-') {
             sign = -1;
-            start++;
+            pos++;
         }
-        for(int i = start; i < len; i++) {
-            if(str.charAt(i) < '0' || str.charAt(i) > '9') {
+        while(pos < len) {
+            if(str.charAt(pos) < '0' || str.charAt(pos) > '9') {
                 break;
             }
-            if(res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && Integer.MAX_VALUE % 10 < str.charAt(i) - '0')) {
+            if(res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && Integer.MAX_VALUE % 10 < str.charAt(pos) - '0')) {
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-            } else{
-                res = 10 * res + str.charAt(i) - '0';
             }
+            res = res * 10 + str.charAt(pos) - '0';
+            pos++;
         }
         return sign * res;
     }
