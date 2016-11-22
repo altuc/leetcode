@@ -22,3 +22,14 @@ public class Solution2 {
         return strs[strs.length - 1].length();
     }
 }
+
+public class Solution3 {
+    public int lengthOfLastWord(String s) {
+        if(s == null || s.trim().isEmpty()) {
+            return 0;
+        }
+        s = s.trim();
+        int lastSpace = s.lastIndexOf(" ");
+        return s.length() - lastSpace - 1;
+    } 
+}
