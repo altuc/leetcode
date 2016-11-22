@@ -3,14 +3,17 @@ public class Solution {
         if(haystack == null || needle == null || haystack.length() < needle.length()) {
             return -1;
         }
-        for(int i = 0; i < haystack.length() - needle.length() + 1; i++) {
+        int len = haystack.length() - needle.length();
+        int needleLen = needle.length();
+        for(int i = 0; i <= len; i++) {
             int j = 0;
-            for(; j < needle.length(); j++) {
-                if(haystack.charAt(i + j) != needle.charAt(j)) {
+            while(j < needleLen) {
+                if(haystack.charAt(j + i) != needle.charAt(j)) {
                     break;
                 }
+                j++;
             }
-            if(j == needle.length()) {
+            if(j == needleLen) {
                 return i;
             }
         }
