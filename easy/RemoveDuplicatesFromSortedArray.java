@@ -3,13 +3,13 @@ public class Solution {
         if(nums == null || nums.length == 0) {
             return 0;
         }
-        int left = 1;
-        for(int i = 1; i < nums.length; i++) {
+        int pos = 1;
+        int len = nums.length;
+        for(int i = 1; i < len; i++) {
             if(nums[i] != nums[i - 1]) {
-                nums[left] = nums[i];
-                left++;
+                nums[pos++] = nums[i];
             }
         }
-        return left;
+        return pos;
     }
 }
