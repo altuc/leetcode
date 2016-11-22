@@ -18,7 +18,7 @@ public class Solution2 {
         if(s == null || s.trim().isEmpty()) {
             return 0;
         }
-        String[] str = s.trim().split(" ");
-        return str[str.length - 1].length();
+        String[] strs = s.trim().split(" ");
+        return strs[strs.length - 1].length();
     }
 }
