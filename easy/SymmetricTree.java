@@ -8,7 +8,7 @@
  * }
  */
 
-/* recursively */
+/* Recursively */
 public class Solution1 {
     public boolean isSymmetric(TreeNode root) {
         if(root == null) {
@@ -17,53 +17,18 @@ public class Solution1 {
         return isSymmetricHelper(root.left, root.right);
     }
     
-    public boolean isSymmetricHelper(TreeNode l, TreeNode r) {
-        if(l == null && r == null) {
-            return true;
-        }
-        if(l != null && r == null) {
-            return false;
-        }
-        if(l == null && r != null) {
-            return false;
-        }
-        if(l.val != r.val) {
-            return false;
-        }
-        if(!isSymmetricHelper(l.left, r.right)) {
-            return false;
-        }
-        if(!isSymmetricHelper(l.right, r.left)) {
-            return false;
-        }
-        return true;
-    }
-}
-
-public class Solution2 {
-    public boolean isSymmetric(TreeNode root) {
-        if(root == null) {
-            return true;
-        }
-        return isSymmetricHelper(root.left, root.right);
-    }
-    
-    public boolean isSymmetricHelper(TreeNode left, TreeNode right) {
+    private boolean isSymmetricHelper(TreeNode left, TreeNode right) {
         if(left == null && right == null) {
             return true;
-        } else if((left == null && right != null) || (left != null && right == null)) {
-            return false;
-        } else {
-            if(left.val != right.val) {
-                return false;
-            } else {
-                return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
-            }
         }
+        if((left == null && right != null) || (left != null && right == null) || left.val != right.val) {
+            return false;
+        }
+        return isSymmetricHelper(left.left, right.right) && isSymmetricHelper(left.right, right.left);
     }
 }
 
-/* iteratively */
+/* Iteratively */
 public class Solution3 {
     public boolean isSymmetric(TreeNode root) {
        if(root == null) {
