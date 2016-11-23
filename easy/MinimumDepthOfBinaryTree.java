@@ -37,11 +37,9 @@ public class Solution2 {
         q.add(root);
         int depth = 1;
         while(!q.isEmpty()) {
-            List<TreeNode> ls = new ArrayList<TreeNode>();
-            while(!q.isEmpty()) {
-                ls.add(q.poll());
-            }
-            for(TreeNode n : ls) {
+            int size = q.size();
+            for(int i = 0; i < size; i++) {
+                TreeNode n = q.poll();
                 if(n.left == null && n.right == null) {
                     return depth;
                 }
