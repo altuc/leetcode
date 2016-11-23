@@ -29,45 +29,42 @@ public class Solution1 {
 }
 
 /* Iteratively */
-public class Solution3 {
+public class Solution2 {
     public boolean isSymmetric(TreeNode root) {
-       if(root == null) {
-           return true;
-       }
-       if(root.left == null && root.right == null) {
-           return true;
-       }
-       if(root.left != null && root.right == null) {
-           return false;
-       }
-       if(root.left == null && root.right != null) {
-           return false;
-       }
-       Stack<TreeNode> s1 = new Stack<TreeNode>();
-       s1.push(root.left);
-       Stack<TreeNode> s2 = new Stack<TreeNode>();
-       s2.push(root.right);
-       while(!s1.empty() && !s2.empty()) {
-           if(s1.peek().val != s2.peek().val) {
-               return false;
-           }
-           TreeNode t1 = s1.pop();
-           TreeNode t2 = s2.pop();
-           if(t1.left != null && t2.right != null) {
-               s1.push(t1.left);
-               s2.push(t2.right);
-           } else if(t1.left == null && t2.right == null) {
-           } else {
-               return false;
-           }
-           if(t1.right != null && t2.left != null) {
-               s1.push(t1.right);
-               s2.push(t2.left);
-           } else if(t1.right == null && t2.left == null) {
-           } else {
-               return false;
-           }
-       }
-       return true;
+        if(root == null) {
+            return true;
+        }
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        if(left == null || right == null) {
+            return left == right;
+        }
+        Queue<TreeNode> que = new LinkedList<TreeNode>();
+        que.add(left);
+        que.add(right);
+        while(!que.isEmpty()) {
+            left = que.poll();
+            right = que.poll();
+            if(left.val != right.val) {
+                return false;
+            }
+            if(left.left != null && right.right != null) {
+                que.add(left.left);
+                que.add(right.right);
+            } else {
+                if(left.left != right.right) {
+                    return false;
+                }
+            }
+            if(left.right != null && right.left != null) {
+                que.add(left.right);
+                que.add(right.left);
+            } else {
+                if(left.right != right.left) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
