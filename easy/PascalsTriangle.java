@@ -34,16 +34,15 @@ public class Solution2 {
         return generateHelper(numRows, rs, ls);
     }
     
-    public List<List<Integer>> generateHelper(int numRows, List<List<Integer>> rs, List<Integer> ls) {
+    private List<List<Integer>> generateHelper(int numRows, List<List<Integer>> rs, List<Integer> ls) {
         if(numRows == 1) {
             return rs;
         }
         List<Integer> row = new ArrayList<Integer>();
         row.add(1);
-        if(ls.size() > 1) {
-            for(int i = 0; i < ls.size() - 1; i++) {
-                row.add(ls.get(i) + ls.get(i + 1));
-            }
+        int size = ls.size();
+        for(int i = 1; i < size; i++) {
+            row.add(ls.get(i - 1) + ls.get(i));
         }
         row.add(1);
         rs.add(row);
