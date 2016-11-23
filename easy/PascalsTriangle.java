@@ -4,20 +4,19 @@ public class Solution1 {
         if(numRows <= 0) {
             return res;
         }
+        List<Integer> cur = new ArrayList<Integer>();
         List<Integer> pre = new ArrayList<Integer>();
-        pre.add(1);
-        res.add(pre);
-        int level = 1;
-        while(level < numRows) {
-            List<Integer> row = new ArrayList<Integer>();
-            row.add(1);
-            for(int i = 1; i < level; i++) {
-                row.add(pre.get(i - 1) + pre.get(i));
+        cur.add(1);
+        res.add(cur);
+        for(int i = 1; i < numRows; i++) {
+            pre = cur;
+            cur = new ArrayList<Integer>();
+            cur.add(1);
+            for(int j = 1; j < i; j++) {
+                cur.add(pre.get(j - 1) + pre.get(j));
             }
-            row.add(1);
-            res.add(row);
-            pre = row;
-            level++;
+            cur.add(1);
+            res.add(cur);
         }
         return res;
     }
@@ -50,28 +49,5 @@ public class Solution2 {
         rs.add(row);
         numRows--;
         return generateHelper(numRows, rs, row);
-    }
-}
-
-public class Solution3 {
-    public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        List<Integer> firstRow = new ArrayList<Integer>();
-        if(numRows <= 0) {
-            return res;
-        }
-        firstRow.add(1);
-        res.add(firstRow);
-        for(int i = 1; i < numRows; i++) {
-            List<Integer> row = new ArrayList<Integer>();
-            row.add(1);
-            for(int j = 1; j < res.get(i - 1).size(); j++) {
-                int num = res.get(i - 1).get(j - 1) + res.get(i - 1).get(j);
-                row.add(num);
-            }
-            row.add(1);
-            res.add(row);
-        }
-        return res;   
     }
 }
