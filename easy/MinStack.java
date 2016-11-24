@@ -1,12 +1,12 @@
 public class MinStack {
 
-    private Stack<Integer> sta = null;
-    private Stack<Integer> min = null;
+    private Deque<Integer> sta = null;
+    private Deque<Integer> min = null;
     
     /** initialize your data structure here. */
     public MinStack() {
-        sta = new Stack<Integer>();
-        min = new Stack<Integer>();
+        sta = new ArrayDeque<Integer>();
+        min = new ArrayDeque<Integer>();
     }
     
     public void push(int x) {
