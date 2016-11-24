@@ -16,8 +16,7 @@ public class Solution extends Reader4 {
             eof = count < 4;
             count = Math.min(count, n - total);
             for(int i = 0; i < count; i++) {
-                buf[total] = buf4[i];
-                total++;
+                buf[total++] = buf4[i];
             }
         }
         return total;
