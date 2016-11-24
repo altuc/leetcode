@@ -5,7 +5,7 @@ public class Solution {
         }
         int start = 0;
         int end = num.length() - 1;
-        while(start < end) {
+        while(start <= end) {
             if(num.charAt(start) == '6' && num.charAt(end) != '9') {
                 return false;
             }
@@ -26,9 +26,6 @@ public class Solution {
             }
             start++;
             end--;
-        }
-        if(start == end && num.charAt(start) != '0' && num.charAt(start) != '1' && num.charAt(start) != '8') {
-            return false;
         }
         return true;
     }
