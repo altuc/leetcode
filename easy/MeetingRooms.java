@@ -13,7 +13,8 @@ public class Solution {
             return true;
         }
         Arrays.sort(intervals, (i1, i2) -> i1.start - i2.start);
-        for(int i = 1; i < intervals.length; i++) {
+        int len = intervals.length;
+        for(int i = 1; i < len; i++) {
             if(intervals[i].start < intervals[i - 1].end) {
                 return false;
             }
