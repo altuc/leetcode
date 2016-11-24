@@ -7,36 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution1 {
-    public List<String> binaryTreePaths(TreeNode root) {
-        List<String> res = new ArrayList<String>();
-        if(root == null) {
-            return res;
-        } 
-        String path = Integer.toString(root.val);
-        binaryTreePathsHelper(root.left, root.right, path, res);
-        return res;
-    }
-    
-    public void binaryTreePathsHelper(TreeNode left, TreeNode right, String path, List<String> res) {
-        if(left == null && right == null) {
-            res.add(path);
-        } else if(left == null && right != null) {
-            path = path + "->" + Integer.toString(right.val);
-            binaryTreePathsHelper(right.left, right.right, path, res);
-        } else if(left != null && right == null) {
-            path = path + "->" + Integer.toString(left.val);
-            binaryTreePathsHelper(left.left, left.right, path, res);
-        } else {
-            String path1 = path + "->" + Integer.toString(right.val);
-            binaryTreePathsHelper(right.left, right.right, path1, res);
-            String path2 = path + "->" + Integer.toString(left.val);
-            binaryTreePathsHelper(left.left, left.right, path2, res);
-        }
-    }
-}
-
-public class Solution2 {
+public class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<String>();
         if(root == null) {
@@ -46,7 +17,7 @@ public class Solution2 {
         return res;
     }
     
-    public void binaryTreePathsHelper(TreeNode node, List<String> res, String path) {
+    private void binaryTreePathsHelper(TreeNode node, List<String> res, String path) {
         if(node.left == null && node.right == null) {
             path += node.val;
             res.add(path);
