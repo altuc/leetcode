@@ -9,7 +9,7 @@ public class Solution {
             int len = str.length();
             String key = "";
             for(int i = 1; i < len; i++) {
-                int diff = str.charAt(i) - str.charAt(i - 1) < 0 ? str.charAt(i) - str.charAt(i - 1) + 26: str.charAt(i) - str.charAt(i - 1);
+                int diff = str.charAt(i) - str.charAt(i - 1) < 0 ? str.charAt(i) - str.charAt(i - 1) + 26 : str.charAt(i) - str.charAt(i - 1);
                 key += diff;
             }
             if(!map.containsKey(key)) {
