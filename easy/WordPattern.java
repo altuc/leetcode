@@ -5,7 +5,7 @@ public class Solution {
         if(len != words.length) {
             return false;
         }
-        Map<Character, String> map = new HashMap<>();
+        Map<Character, String> map = new HashMap<Character, String>();
         for(int i = 0; i < len; i++) {
             if(!map.containsKey(pattern.charAt(i))) {
                 if(map.containsValue(words[i])) {
