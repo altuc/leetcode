@@ -6,9 +6,10 @@ public class NumArray {
         if(nums == null || nums.length == 0) {
             return;
         }
-        sums = new int[nums.length];
+        int len = nums.length;
+        sums = new int[len];
         sums[0] = nums[0];
-        for(int i = 1; i < nums.length; i++) {
+        for(int i = 1; i < len; i++) {
             sums[i] = sums[i - 1] + nums[i];
         }
     }
