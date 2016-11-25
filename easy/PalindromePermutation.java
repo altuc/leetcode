@@ -1,9 +1,9 @@
 public class Solution {
     public boolean canPermutePalindrome(String s) {
-        if(s == null || s.length() < 2) {
-            return true;
+        if(s == null || s.isEmpty()) {
+            return false;
         }
-        HashSet<Character> set = new HashSet<Character>();
+        Set<Character> set = new HashSet<Character>();
         for(char c : s.toCharArray()) {
             if(!set.add(c)) {
                 set.remove(c);
