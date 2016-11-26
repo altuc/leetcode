@@ -1,8 +1,8 @@
 public class MovingAverage {
     
     private Queue<Integer> q = null;
-    int max;
-    double sum = 0.0;
+    private int max;
+    private double sum;
 
     /** Initialize your data structure here. */
     public MovingAverage(int size) {
@@ -11,6 +11,7 @@ public class MovingAverage {
         }
         q = new LinkedList<Integer>();
         max = size;
+        sum = 0;
     }
     
     public double next(int val) {
