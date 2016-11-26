@@ -1,6 +1,6 @@
 public class Logger {
     
-    private HashMap<String, Integer> map = null;
+    private Map<String, Integer> map = null;
 
     /** Initialize your data structure here. */
     public Logger() {
