@@ -3,8 +3,9 @@ public class Solution1 {
         if(s == null || s.isEmpty()) {
             return -1;
         }
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        for(int i = 0; i < s.length(); i++) {
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        int len = s.length();
+        for(int i = 0; i < len; i++) {
             if(map.containsKey(s.charAt(i))) {
                 map.put(s.charAt(i), -1);
             } else {
@@ -26,12 +27,13 @@ public class Solution2 {
         if(s == null || s.isEmpty()) {
             return -1;
         }
-        int[] count = new int[256];
+        int[] count = new int[26];
+        int len = s.length();
         for(char c : s.toCharArray()) {
-            count[c]++;
+            count[c - 'a']++;
         }
-        for(int i = 0; i < s.length(); i++) {
-            if(count[s.charAt(i)] == 1) {
+        for(int i = 0; i < len; i++) {
+            if(count[s.charAt(i) - 'a'] == 1) {
                 return i;
             }
         }
