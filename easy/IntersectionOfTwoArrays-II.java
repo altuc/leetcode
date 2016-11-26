@@ -1,6 +1,6 @@
 public class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         ArrayList<Integer> interList = new ArrayList<Integer>();
         for(int num : nums1) {
             map.put(num, map.containsKey(num) ? map.get(num) + 1 : 1);
