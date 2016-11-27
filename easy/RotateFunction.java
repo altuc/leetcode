@@ -4,16 +4,15 @@ public class Solution {
             return 0;
         }
         int n = A.length;
-        int res = 0;
-        int sum = 0;
+        int res = 0, sum = 0;
         for(int i = 0; i < n; i++) {
             res += i * A[i];
             sum += A[i];
         }
-        int fk = res;
+        int total = res;
         for(int i = n - 1; i > 0; i--) {
-            fk = fk + sum - n * A[i];
-            res = Math.max(res, fk);
+            total += sum - n * A[i];
+            res = Math.max(res, total);
         }
         return res;
     }
