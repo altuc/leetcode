@@ -20,7 +20,9 @@ public class Solution {
                 sum += sumOfLeftLeaves(root.left);
             }
         }
-        sum += sumOfLeftLeaves(root.right);
+        if(root.right != null) {
+            sum += sumOfLeftLeaves(root.right);
+        }
         return sum;
     }
 }
