@@ -4,7 +4,7 @@ public class Solution {
         return integerReplacementHelper(ln, 0);
     }
     
-    public int integerReplacementHelper(long n, int count) {
+    private int integerReplacementHelper(long n, int count) {
         if(n == 1) {
             return count;
         } else if(n % 2 == 0) {
