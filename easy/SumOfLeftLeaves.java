@@ -12,21 +12,15 @@ public class Solution {
         if(root == null) {
             return 0;
         }
-        return sumOfLeftLeavesHelper(root, false);
-    }
-    
-    public int sumOfLeftLeavesHelper(TreeNode node, boolean isLeft) {
         int sum = 0;
-        if(node.left == null && node.right == null) {
-            sum = isLeft ? node.val : 0;
-        } else if(node.left != null && node.right == null) {
-            sum += sumOfLeftLeavesHelper(node.left, true);
-        } else if(node.left == null && node.right != null) {
-            sum += sumOfLeftLeavesHelper(node.right, false);
-        } else {
-            sum += sumOfLeftLeavesHelper(node.left, true);
-            sum += sumOfLeftLeavesHelper(node.right, false);
+        if(root.left != null) {
+            if(root.left.left == null && root.left.right == null) {
+                sum += root.left.val;
+            } else {
+                sum += sumOfLeftLeaves(root.left);
+            }
         }
+        sum += sumOfLeftLeaves(root.right);
         return sum;
     }
 }
