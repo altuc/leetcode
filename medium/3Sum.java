@@ -5,7 +5,8 @@ public class Solution {
             return res;
         }
         Arrays.sort(nums);
-        for(int i = 0; i < nums.length - 2; i++) {
+        int len = nums.length - 2;
+        for(int i = 0; i < len; i++) {
             if(i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
