@@ -1,21 +1,22 @@
 public class Solution {
-    
     private int start = 0;
-    private int max = 0;
+    private int max = 1;
     
     public String longestPalindrome(String s) {
         if(s == null || s.length() <= 1) {
             return s;
         }
-        for(int i = 0; i < s.length() - 1; i++) {
+        int len = s.length() - 1;
+        for(int i = 0; i < len; i++) {
             longestPalindromeHelper(s, i, i);
             longestPalindromeHelper(s, i, i + 1);
         }
         return s.substring(start, start + max);
     }
     
-    public void longestPalindromeHelper(String s, int i, int j) {
-        while(i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+    private void longestPalindromeHelper(String s, int i, int j) {
+        int len = s.length();
+        while(i >= 0 && j < len && s.charAt(i) == s.charAt(j)) {
             i--;
             j++;
         }
