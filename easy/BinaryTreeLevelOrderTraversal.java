@@ -13,20 +13,20 @@ public class Solution {
         if(root == null) {
             return res;
         }
-        Queue<TreeNode> q = new LinkedList<TreeNode>();
-        q.add(root);
-        while(!q.isEmpty()) {
-            int size = q.size();
+        Deque<TreeNode> que = new ArrayDeque<TreeNode>();
+        que.add(root);
+        while(!que.isEmpty()) {
+            int size = que.size();
             List<Integer> level = new ArrayList<Integer>();
             for(int i = 0; i < size; i++) {
-                TreeNode n = q.poll();
-                level.add(n.val);
+                TreeNode n = que.poll();
                 if(n.left != null) {
-                    q.add(n.left);
+                    que.add(n.left);
                 }
                 if(n.right != null) {
-                    q.add(n.right);
+                    que.add(n.right);
                 }
+                level.add(n.val);
             }
             res.add(level);
         }
