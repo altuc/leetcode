@@ -13,6 +13,18 @@ public class Solution1 {
 public class Solution2 {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
+        int count = 0;
+        while(n != 0) {
+            n &= (n - 1);
+            count++;
+        }
+        return count;
+    }
+}
+
+public class Solution3 {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
         String str = Integer.toBinaryString(n);
         str = str.replaceAll("0", "");
         return str.length();
