@@ -4,41 +4,32 @@ public class Solution {
         if(matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return res;
         }
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int left = 0;
-        int right = n - 1;
-        int top = 0;
-        int bottom = m - 1;
+        int left = 0, right = matrix[0].length - 1, top = 0, bottom = matrix.length - 1;
         while(true) {
             for(int i = left; i <= right; i++) {
                 res.add(matrix[top][i]);
             }
-            if(res.size() == m * n) {
+            if(++top > bottom) {
                 break;
             }
-            top++;
             for(int i = top; i <= bottom; i++) {
                 res.add(matrix[i][right]);
             }
-            if(res.size() == m * n) {
+            if(--right < left) {
                 break;
             }
-            right--;
             for(int i = right; i >= left; i--) {
                 res.add(matrix[bottom][i]);
             }
-            if(res.size() == m * n) {
+            if(--bottom < top) {
                 break;
             }
-            bottom--;
             for(int i = bottom; i >= top; i--) {
                 res.add(matrix[i][left]);
             }
-            if(res.size() == m * n) {
+            if(++left > right) {
                 break;
             }
-            left++;
         }
         return res;
     }
