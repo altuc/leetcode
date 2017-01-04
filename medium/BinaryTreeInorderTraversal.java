@@ -10,19 +10,15 @@
 public class Solution1 {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
-        if(root == null) {
-            return res;
-        }
-        Stack<TreeNode> s = new Stack<TreeNode>();
-        TreeNode n = root;
-        while(!s.empty() || n != null) {
-            if(n != null) {
-                s.push(n);
-                n = n.left;
+        Deque<TreeNode> sta = new ArrayDeque<TreeNode>();
+        while(!sta.isEmpty() || root != null) {
+            if(root != null) {
+                sta.push(root);
+                root = root.left;
             } else {
-                n = s.pop();
-                res.add(n.val);
-                n = n.right;
+                root = sta.pop();
+                res.add(root.val);
+                root = root.right;
             }
         }
         return res;
