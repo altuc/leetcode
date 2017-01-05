@@ -9,12 +9,13 @@ public class Solution {
         return res;
     }
     
-    public void permuteHelper(int[] nums, List<List<Integer>> res, List<Integer> list) {
+    private void permuteHelper(int[] nums, List<List<Integer>> res, List<Integer> list) {
         if(list.size() == nums.length) {
             res.add(new ArrayList<Integer>(list));
             return;
         }
-        for(int i = 0; i < nums.length; i++) {
+        int len = nums.length;
+        for(int i = 0; i < len; i++) {
             if(list.contains(nums[i])) {
                 continue;
             }
