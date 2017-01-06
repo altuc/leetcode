@@ -12,33 +12,10 @@ public class Solution1 {
         if(root == null) {
             return;
         }
-        Stack<TreeNode> sta = new Stack<TreeNode>();
-        sta.push(root);
-        while(!sta.empty()) {
-            TreeNode n = sta.pop();
-            if(n.right != null) {
-                sta.push(n.right);
-            }
-            if(n.left != null) {
-                sta.push(n.left);
-            }
-            n.left = null;
-            if(!sta.empty()) {
-                n.right = sta.peek();
-            }
-        }
-    }
-}
-
-public class Solution2 {
-    public void flatten(TreeNode root) {
-        if(root == null) {
-            return;
-        }
-        Stack<TreeNode> sta = new Stack<TreeNode>();
+        Deque<TreeNode> sta = new ArrayDeque<TreeNode>();
         sta.push(root);
         TreeNode cur = null;
-        while(!sta.empty()) {
+        while(!sta.isEmpty()) {
             TreeNode n = sta.pop();
             if(n.right != null) {
                 sta.push(n.right);
@@ -52,5 +29,30 @@ public class Solution2 {
             }
             cur = n;
         }
+    }
+}
+
+public class Solution2 {
+    public void flatten(TreeNode root) {
+        Deque<TreeNode> sta = new ArrayDeque<TreeNode>();
+        TreeNode pre = null;
+        while(!sta.isEmpty() || root != null) {
+            if(root != null) {
+                if(root.left != null) {
+                    if(root.right != null) {
+                        sta.push(root.right);
+                    }
+                    root.right = root.left;
+                    root.left = null;
+                }
+                pre = root;
+                root = root.right;
+            } else {
+                TreeNode next = sta.pop();
+                pre.right = next;
+                root = next;
+            }
+        }
+        
     }
 }
