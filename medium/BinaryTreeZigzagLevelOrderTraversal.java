@@ -13,29 +13,28 @@ public class Solution {
         if(root == null) {
             return res;
         }
-        Queue<TreeNode> q = new LinkedList<TreeNode>();
-        q.add(root);
         boolean oddLevel = true;
-        while(!q.isEmpty()) {
-            int size = q.size();
+        Deque<TreeNode> que = new ArrayDeque<TreeNode>();
+        que.add(root);
+        while(!que.isEmpty()) {
+            int size = que.size();
             List<Integer> level = new ArrayList<Integer>();
             for(int i = 0; i < size; i++) {
-                TreeNode n = q.poll();
-                level.add(n.val);
+                TreeNode n = que.poll();
                 if(n.left != null) {
-                    q.add(n.left);
+                    que.add(n.left);
                 }
                 if(n.right != null) {
-                    q.add(n.right);
+                    que.add(n.right);
+                }
+                if(oddLevel) {
+                    level.add(n.val);
+                } else {
+                    level.add(0, n.val);
                 }
             }
-            if(oddLevel) {
-                res.add(level);
-            } else {
-                Collections.reverse(level);
-                res.add(level);
-            }
             oddLevel = !oddLevel;
+            res.add(level);
         }
         return res;
     }
