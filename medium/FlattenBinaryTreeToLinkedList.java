@@ -53,6 +53,5 @@ public class Solution2 {
                 root = next;
             }
         }
-        
     }
 }
