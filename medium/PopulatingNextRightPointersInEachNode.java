@@ -6,7 +6,7 @@
  *     TreeLinkNode(int x) { val = x; }
  * }
  */
-public class Solution {
+public class Solution1 {
     public void connect(TreeLinkNode root) {
         if(root == null) {
             return;
@@ -22,5 +22,21 @@ public class Solution {
             }
             root = root.left;
         }
+    }
+}
+
+public class Solution2 {
+    public void connect(TreeLinkNode root) {
+        if(root == null) {
+            return;
+        }
+        if(root.left != null) {
+            root.left.next = root.right;
+            if(root.next != null) {
+                root.right.next = root.next.left;
+            }
+        }
+        connect(root.left);
+        connect(root.right);
     }
 }
