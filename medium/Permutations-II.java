@@ -11,16 +11,13 @@ public class Solution {
         return res;
     }
     
-    public void permuteUniqueHelper(int[] nums, List<List<Integer>> res, List<Integer> list, boolean[] visited) {
+    private void permuteUniqueHelper(int[] nums, List<List<Integer>> res, List<Integer> list, boolean[] visited) {
         if(list.size() == nums.length) {
             res.add(new ArrayList<Integer>(list));
             return;
         }
         for(int i = 0; i < nums.length; i++) {
-            if(visited[i]) {
-                continue;
-            }
-            if(i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {
+            if((i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) || visited[i]) {
                 continue;
             }
             list.add(nums[i]);
