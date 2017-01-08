@@ -1,15 +1,13 @@
 public class Solution {
     public boolean exist(char[][] board, String word) {
-        if(!word.isEmpty() && (board == null || board.length == 0 || board[0].length == 0)) {
+        if(board == null || board.length == 0 || board[0].length == 0 || word == null) {
             return false;
         }
-        if(board.length * board[0].length < word.length()) {
-            return false;
-        }
-        boolean[][] visited = new boolean[board.length][board[0].length];
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board[0].length; j++) {
-                if(existHelper(board, word, i, j, 0, visited)) {
+        int m = board.length, n = board[0].length;
+        boolean[][] visited = new boolean[m][n];
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(existHelper(board, word, visited, 0, i, j)) {
                     return true;
                 }
             }
@@ -17,22 +15,21 @@ public class Solution {
         return false;
     }
     
-    public boolean existHelper(char[][] board, String word, int top, int left, int start, boolean[][] visited) {
-        if(start == word.length()) {
+    private boolean existHelper(char[][] board, String word, boolean[][] visited, int count, int i, int j) {
+        if(count == word.length()) {
             return true;
         }
-        if(top < 0 || top == board.length || left < 0 || left == board[0].length) {
+        if(i < 0 || i == board.length || j < 0 || j == board[0].length || visited[i][j] || board[i][j] != word.charAt(count)) {
             return false;
         }
-        if(visited[top][left] || board[top][left] != word.charAt(start)) {
-            return false;
+        visited[i][j] = true;
+        int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        for(int[] dir : dirs) {
+            if(existHelper(board, word, visited, count + 1, i + dir[0], j + dir[1])) {
+                return true;
+            }
         }
-        visited[top][left] = true;
-        boolean res = existHelper(board, word, top + 1, left, start + 1, visited)
-                      || existHelper(board, word, top - 1, left, start + 1, visited)
-                      || existHelper(board, word, top, left + 1, start + 1, visited)
-                      || existHelper(board, word, top, left - 1, start + 1, visited);
-        visited[top][left] = false;
-        return res;
+        visited[i][j] = false;
+        return false;
     }
 }
