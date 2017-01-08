@@ -3,17 +3,18 @@ public class Solution {
         if(path == null || path.isEmpty()) {
             return path;
         }
-        Stack<String> sta = new Stack<String>();
-        for(String dir : path.split("/")) {
-            if(!dir.equals("..") && !dir.equals(".") && !dir.equals("")) {
+        StringBuilder sb = new StringBuilder();
+        String[] dirs = path.split("/");
+        Deque<String> sta = new ArrayDeque<String>();
+        for(String dir : dirs) {
+            if(!dir.equals("") && !dir.equals(".") && !dir.equals("..")) {
                 sta.push(dir);
             }
-            if(!sta.empty() && dir.equals("..")) {
+            if(dir.equals("..") && !sta.isEmpty()) {
                 sta.pop();
             }
         }
-        StringBuilder sb = new StringBuilder();
-        while(!sta.empty()) {
+        while(!sta.isEmpty()) {
             sb.insert(0, "/" + sta.pop());
         }
         return sb.length() == 0 ? "/" : sb.toString();
