@@ -38,10 +38,10 @@ public class BSTIterator {
     }
     
     // Recursive
-    private void pushAll(TreeNode node) {
-        if(node != null) {
-            sta.push(node);
-            pushAll(node.left);
+    private void pushAll(TreeNode n) {
+        if(n != null) {
+            sta.push(n);
+            pushAll(n.left);
         }
     }
 }
