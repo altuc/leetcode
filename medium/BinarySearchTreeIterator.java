@@ -9,17 +9,17 @@
  */
 
 public class BSTIterator {
-
-    private Stack<TreeNode> sta = null;
+    
+    private Deque<TreeNode> sta = null;
 
     public BSTIterator(TreeNode root) {
-        sta = new Stack<TreeNode>();
+        sta = new ArrayDeque<TreeNode>();
         pushAll(root);
     }
 
     /** @return whether we have a next smallest number */
     public boolean hasNext() {
-        return !sta.empty();
+        return !sta.isEmpty();
     }
 
     /** @return the next smallest number */
@@ -29,6 +29,15 @@ public class BSTIterator {
         return n.val;
     }
     
+    // Iterative
+    private void pushAll(TreeNode n) {
+        while(n != null) {
+            sta.push(n);
+            n = n.left;
+        }
+    }
+    
+    // Recursive
     private void pushAll(TreeNode node) {
         if(node != null) {
             sta.push(node);
