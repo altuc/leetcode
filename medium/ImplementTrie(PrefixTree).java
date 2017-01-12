@@ -1,12 +1,14 @@
 class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    boolean isLeaf;
     
     // Initialize your data structure here.
-    public TrieNode[] children = new TrieNode[26];
-    public boolean isLeaf;
+    public TrieNode() {
+        
+    }
 }
 
 public class Trie {
-    
     private TrieNode root;
 
     public Trie() {
@@ -15,37 +17,37 @@ public class Trie {
 
     // Inserts a word into the trie.
     public void insert(String word) {
-        TrieNode cur = root;
-        for(int i = 0; i < word.length(); i++) {
-            if(cur.children[word.charAt(i) - 'a'] == null) {
-                cur.children[word.charAt(i) - 'a'] = new TrieNode();
+        TrieNode node = root;
+        for(char c : word.toCharArray()) {
+            if(node.children[c - 'a'] == null) {
+                node.children[c - 'a'] = new TrieNode();
             }
-            cur = cur.children[word.charAt(i) - 'a'];
+            node = node.children[c - 'a'];
         }
-        cur.isLeaf = true;
+        node.isLeaf = true;
     }
 
     // Returns if the word is in the trie.
     public boolean search(String word) {
-        TrieNode cur = root;
-        for(int i = 0; i < word.length(); i++) {
-            if(cur.children[word.charAt(i) - 'a'] == null) {
+        TrieNode node = root;
+        for(char c : word.toCharArray()) {
+            if(node.children[c - 'a'] == null) {
                 return false;
             }
-            cur = cur.children[word.charAt(i) - 'a'];
+            node = node.children[c - 'a'];
         }
-        return cur.isLeaf;
+        return node.isLeaf;
     }
 
     // Returns if there is any word in the trie
     // that starts with the given prefix.
     public boolean startsWith(String prefix) {
-        TrieNode cur = root;
-        for(int i = 0; i < prefix.length(); i++) {
-            if(cur.children[prefix.charAt(i) - 'a'] == null) {
+        TrieNode node = root;
+        for(char c : prefix.toCharArray()) {
+            if(node.children[c - 'a'] == null) {
                 return false;
             }
-            cur = cur.children[prefix.charAt(i) - 'a'];
+            node = node.children[c - 'a'];
         }
         return true;
     }
