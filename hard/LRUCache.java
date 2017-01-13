@@ -43,14 +43,14 @@ public class LRUCache {
         }
     }
     
-    public void moveNodeToHead(Node node) {
+    private void moveNodeToHead(Node node) {
         node.next = head.next;
         node.next.pre = node;
         node.pre = head;
         head.next = node;
     }
     
-    public void removeNode(Node node) {
+    private void removeNode(Node node) {
         node.pre.next = node.next;
         node.next.pre = node.pre;
     }
