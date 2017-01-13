@@ -13,22 +13,18 @@ public class Solution {
         if(intervals == null || intervals.isEmpty()) {
             return res;
         }
-        if(intervals.size() == 1) {
-            return intervals;
-        }
         Collections.sort(intervals, (i1, i2) -> i1.start - i2.start);
-        int start = intervals.get(0).start;
-        int end = intervals.get(0).end; 
-        for(int i = 0; i < intervals.size() - 1; i++) {
-            if(end < intervals.get(i + 1).start) {
-                res.add(new Interval(start, end));
-                start = intervals.get(i + 1).start;
-                end = intervals.get(i + 1).end;
+        Interval cur = intervals.get(0);
+        int size = intervals.size();
+        for(int i = 1; i < size; i++) {
+            if(intervals.get(i).start > cur.end) {
+                res.add(cur);
+                cur = intervals.get(i);
             } else {
-                end = Math.max(end, intervals.get(i + 1).end);
+                cur.end = Math.max(cur.end, intervals.get(i).end);
             }
         }
-        res.add(new Interval(start, end));
+        res.add(cur);
         return res;
     }
 }
