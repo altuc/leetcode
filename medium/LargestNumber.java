@@ -3,9 +3,10 @@ public class Solution {
         if(nums == null || nums.length == 0) {
             return "";
         }
-        String[] strs = new String[nums.length];
-        for(int i = 0; i < nums.length; i++) {
-            strs[i] = String.valueOf(nums[i]);
+        int len = nums.length;
+        String[] strs = new String[len];
+        for(int i = 0; i < len; i++) {
+            strs[i] = nums[i] + "";
         }
         Arrays.sort(strs, new Comparator<String>() {
             @Override
