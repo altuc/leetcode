@@ -61,9 +61,9 @@ public class Solution3 {
         if(root == null) {
             return true;
         }
-        Deuqe<TreeNode> sta = new ArrayDeque<TreeNode>();
+        Deque<TreeNode> sta = new ArrayDeque<TreeNode>();
         Integer pre = null;
-        while(!sta.empty() || root != null) {
+        while(!sta.isEmpty() || root != null) {
             if(root != null) {
                 sta.push(root);
                 root = root.left;
