@@ -19,7 +19,7 @@ public class Codec {
         return sb.toString().substring(0, sb.length() - 1);
     }
     
-    public void serializeHelper(TreeNode node, StringBuilder sb) {
+    private void serializeHelper(TreeNode node, StringBuilder sb) {
         if(node == null) {
             sb.append("#,");
         } else {
@@ -35,19 +35,19 @@ public class Codec {
             return null;
         }
         String[] nodes = data.split(",");
-        Queue<String> q = new LinkedList<String>();
-        q.addAll(Arrays.asList(nodes));
-        return deserializeHelper(q);
+        Deque<String> que = new ArrayDeque<String>();
+        que.addAll(Arrays.asList(nodes));
+        return deserializeHelper(que);
     }
     
-    public TreeNode deserializeHelper(Queue<String> q) {
-        String s = q.poll();
+    private TreeNode deserializeHelper(Deque<String> que) {
+        String s = que.poll();
         if(("#").equals(s)) {
             return null;
         } else {
             TreeNode n = new TreeNode(Integer.parseInt(s));
-            n.left = deserializeHelper(q);
-            n.right = deserializeHelper(q);
+            n.left = deserializeHelper(que);
+            n.right = deserializeHelper(que);
             return n;
         }
     }
