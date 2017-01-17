@@ -12,7 +12,7 @@ public class Solution1 {
         return isValidBSTHelper(root, null, null);
     }
     
-    public boolean isValidBSTHelper(TreeNode node, Integer min, Integer max) {
+    private boolean isValidBSTHelper(TreeNode node, Integer min, Integer max) {
         if(node == null) {
             return true;
         }
@@ -31,7 +31,7 @@ public class Solution2 {
         return isValidBSTHelper(root, null, null);
     }
     
-    public boolean isValidBSTHelper(TreeNode node, Integer min, Integer max) {
+    private boolean isValidBSTHelper(TreeNode node, Integer min, Integer max) {
         if(node.left != null && node.left.val >= node.val) {
             return false;
         }
@@ -61,19 +61,18 @@ public class Solution3 {
         if(root == null) {
             return true;
         }
-        Stack<TreeNode> s = new Stack<TreeNode>();
+        Deuqe<TreeNode> sta = new ArrayDeque<TreeNode>();
         Integer pre = null;
-        while(!s.empty() || root != null) {
+        while(!sta.empty() || root != null) {
             if(root != null) {
-                s.push(root);
+                sta.push(root);
                 root = root.left;
             } else {
-                root = s.pop();
+                root = sta.pop();
                 if(pre != null && pre >= root.val) {
                     return false;
-                } else {
-                    pre = root.val;
-                }
+                } 
+                pre = root.val;
                 root = root.right;
             }
         }
