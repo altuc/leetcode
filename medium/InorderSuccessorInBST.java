@@ -9,29 +9,26 @@
  */
 public class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        if(root == null) {
+        if(root == null || p == null) {
             return null;
         }
         if(p.right != null) {
-            return findMin(p.right);
+            TreeNode n = p.right;
+            while(n.left != null) {
+                n = n.left;
+            }
+            return n;
         } else {
-            TreeNode successor = null;
+            TreeNode n = null;
             while(root != p) {
-                if(p.val < root.val) {
-                    successor = root;
+                if(root.val > p.val) {
+                    n = root;
                     root = root.left;
                 } else {
                     root = root.right;
                 }
             }
-            return successor;
+            return n;
         }
-    }
-    
-    public TreeNode findMin(TreeNode node) {
-        while(node.left != null) {
-            node = node.left;
-        }
-        return node;
     }
 }
