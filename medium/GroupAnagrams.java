@@ -4,19 +4,17 @@ public class Solution {
         if(strs == null || strs.length == 0) {
             return res;
         }
-        HashMap<String, List<String>> map = new HashMap<String, List<String>>();
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
         for(String str : strs) {
-            char[] arr = str.toCharArray();
-            Arrays.sort(arr);
-            String key = String.valueOf(arr);
+            char[] sa = str.toCharArray();
+            Arrays.sort(sa);
+            String key = new String(sa);
             if(!map.containsKey(key)) {
                 map.put(key, new ArrayList<String>());
-            } 
+            }
             map.get(key).add(str);
         }
-        for(List<String> value : map.values()) {
-            res.add(value);
-        }
+        res.addAll(map.values());
         return res;
     }
 }
